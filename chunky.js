@@ -1,3 +1,4 @@
+#!/home/pahosler/bin/nodejs/bin/node
 function chunkArrayInGroups(arr,size) {
   var chunkArr = [];
   var arrPos=0;
