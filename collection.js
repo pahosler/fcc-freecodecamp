@@ -43,37 +43,29 @@ function updateRecords(id, prop, value) {
      return collection;
   }
 }
-//
-//                                                                                                                                                                                                     function addTrack(id,prop,value) {
-//                                                                                                                                                                                                         collectionCopy[id][prop].push(value);
-//
-//                                                                                                                                                                                                             return collectionCopy;
-//                                                                                                                                                                                                             }
-//
-//                                                                                                                                                                                                             function addArtist(id,prop,value) {
-//                                                                                                                                                                                                                 collectionCopy[id][prop]=value;
-//                                                                                                                                                                                                                     return collectionCopy;
-//                                                                                                                                                                                                                     }
-//
-//                                                                                                                                                                                                                     function addAlbum(id,prop,value) {
-//                                                                                                                                                                                                                         collectionCopy[id][prop] = value;
-//                                                                                                                                                                                                                             return collectionCopy;
-//                                                                                                                                                                                                                             }
-//
-//                                                                                                                                                                                                                             function delTracks(id,prop) {
-//                                                                                                                                                                                                                                 delete collectionCopy[id][prop];
-//                                                                                                                                                                                                                                     collectionCopy[id][prop]=[];
-//                                                                                                                                                                                                                                         return collectionCopy;
-//                                                                                                                                                                                                                                         }
-//
-//                                                                                                                                                                                                                                         function delProp(id,prop) {
-//                                                                                                                                                                                                                                             delete collectionCopy[id][prop];
-//                                                                                                                                                                                                                                                 return collectionCopy;
-//                                                                                                                                                                                                                                                 }
-//
-//
-//
-//                                                                                                                                                                                                                                                 // Alter values below to test your code
-//                                                                                                                                                                                                                                                 updateRecords(5439, "artist"," ");
-//
-//
+function addTrack(id,prop,value) {
+collectionCopy[id][prop].push(value);
+return collectionCopy;
+}
+
+function addArtist(id,prop,value) {
+collectionCopy[id][prop]=value;
+return collectionCopy;
+}
+
+function addAlbum(id,prop,value) {
+collectionCopy[id][prop] = value;
+return collectionCopy;
+}
+function delTracks(id,prop) {
+delete collectionCopy[id][prop];
+collectionCopy[id][prop]=[];
+return collectionCopy;
+}
+function delProp(id,prop) {
+delete collectionCopy[id][prop];
+return collectionCopy;
+}
+// Alter values below to test your code
+updateRecords(5439, "artist","ABBA");
+console.log(collection);

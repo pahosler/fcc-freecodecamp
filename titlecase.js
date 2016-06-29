@@ -5,7 +5,6 @@ function titleCase(str) {
   var arr=str.split(' ');
 
   function upper(match,p1,p2,offset,string) {
-    //p1.toUpperCase();
     return [p1.toUpperCase(),p2].join('');
   }
   for (i=0; i<arr.length;++i) {
