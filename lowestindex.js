@@ -5,8 +5,8 @@ function getIndexToIns(arr,num) {
     });
     for (var i = 0; i < arr.length; ++i){
         if (num < arr[i]) {
-            arr.splice(i, 0, num);
             console.log("splice into array " + arr);
+            arr.splice(i, 0, num);
             return arr.indexOf(num);
         } else {
             if (i == arr.length-1) {
