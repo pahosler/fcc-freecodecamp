@@ -18,4 +18,6 @@ function destroyer(arr) {
 }
 
 destroyer([1,2,3,1,2,3],2,3);
-destroyer([3,5,1,2,2],2,3,5);
+destroyer([3, 5, 1, 2, 2], 2, 3, 5);
+destroyer(["diorite", "andesite", "grass", "dirt", "pink wool", "dead shrub"], "diorite", "andesite", "grass", "dirt", "dead shrub");
+destroyer([1, "calf", 3, "piglet"], 1, "calf", 3, 4);
