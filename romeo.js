@@ -21,51 +21,21 @@
 
   function whatIsInAName(collection, source) {
       // What's in a name?
-      //var collection = JSON.parse(JSON.stringify(collection));
-      //var source = JSON.parse(JSON.stringify(source));
-      //    console.log(collection);
-          var arr = [];
-      //    console.log("arrays and values in collection");
+      var arr = [];
+      var pushed ;
       for (var collectionArray in collection) {
+        pushed =0;
           for (var collectionProps in collection[collectionArray]) {
-              //        console.log(collectionProps,collection[collectionArray][collectionProps]);
-              //        console.log("test if source shares a property");
               for (var srcProperty in source) {
-                  //        console.log(srcProperty,collectionProps);
-                  //        console.log(collection[collectionArray].hasOwnProperty(srcProperty));
                   if (collection[collectionArray].hasOwnProperty(srcProperty) &&
-                      collection[collectionArray][collectionProps] === source[srcProperty]) {
+                      collection[collectionArray][collectionProps] === source[srcProperty] && pushed < 1) {
+                        ++pushed;
                       arr.push(collection[collectionArray]);
                   }
-                  //        console.log(srcProperty.valueOf(),collectionProps.valueOf());
               }
           }
-          //console.log(collection[collectionArray]);
       }
-      //  console.log("source properties and values");
-  //    for (var srcProps in source) {
-
-          //  console.log(srcProps,source[srcProps]);
-//      }
-
-      //}
       // Only change code below this line
-      // var names = getOwnPropertyNames(source);
-      // arr=collection.forEach(function(e,i,a){
-      // //for (var name in a[e][i]) {
-      // console.log("element"+i+"= ",e);
-      // //console.log("array = ",a);
-      // console.log("source = ",source);
-      // console.log("does e have source? ",source.hasOwnProperty(e));
-
-      //  if (source.hasOwnProperty(e)){
-      //  return true;
-      //  }else {
-      //    return false;
-      //  }
-      //  }
-      //});
-
 
 
       // Only change code above this line
