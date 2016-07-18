@@ -21,23 +21,28 @@
 
   function whatIsInAName(collection, source) {
       // What's in a name?
+
+      // Only change code below this line
       var arr = [];
-      var pushed ;
+      var numSourceProperties = 0;
+      for (var props in source) {
+          ++numSourceProperties;
+      }
       for (var collectionArray in collection) {
-        pushed =0;
+          var count = 0;
+
           for (var collectionProps in collection[collectionArray]) {
               for (var srcProperty in source) {
                   if (collection[collectionArray].hasOwnProperty(srcProperty) &&
-                      collection[collectionArray][collectionProps] === source[srcProperty] && pushed < 1) {
-                        ++pushed;
-                      arr.push(collection[collectionArray]);
+                      collection[collectionArray][collectionProps] === source[srcProperty]) {
+                      ++count;
+                      if (count === numSourceProperties) {
+                          arr.push(collection[collectionArray]);
+                      }
                   }
               }
           }
       }
-      // Only change code below this line
-
-
       // Only change code above this line
       return arr;
   }
