@@ -88,7 +88,7 @@ var WikiquoteApi = (function() {
    * Get all quotes for a given section.  Most sections will be of the format:
    * <h3> title </h3>
    * <ul>
-   *   <li> 
+   *   <li>
    *     Quote text
    *     <ul>
    *       <li> additional info on the quote </li>
@@ -174,7 +174,6 @@ var WikiquoteApi = (function() {
    * is a redirect.
    */
   wqa.getRandomQuote = function(titles, success, error) {
-
     var errorFunction = function(msg) {
       error(msg);
     };

@@ -5,38 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap-3.3.6/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Londrina+Outline|Orbitron" rel="stylesheet">
-    <link rel="stylesheet" href="font-awesome-4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../font-awesome-4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/quotemachine.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="bootstrap-3.3.6/js/bootstrap.min.js"></script>
-    <!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>-->
-    <script src="jquery.js"></script>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
     <script src="javascript/quotemachine.js"></script>
     <script src="javascript/wikiquotes-api.js"></script>
   </head>
-<body>
- <div id="main">
-  <div id="qm" class="container-fluid text-center">
-    <div class="row">
-      <div id="marvin_container" class="col-sm-6">
-        <img id="marvin" class="img-responsive" src="images/marvin.png">
-        <div id="button_container">
-          <button id="btnQ" type="button" class="btn btn-default" onClick="changeQuote()">Quote</button>
-          <button type="button" class="btn btn-default" onClick="tweet()">Tweet <i class="fa  fa-twitter fa-twitter-1x"></i>
-              </button>
-        </div>
-      </div>
 
-      <div id="globe_container" class="col-sm-6 text-center">
-        <img id="globe" class="img-responsive" src="images/globe.gif">
-        <div id="quote_container">
-          <p id="quote"><i class="fa fa-quote-left fa-1x fa-pull-left fa-border" aria-hidden="true"></i>Here I am, brain the size of a planet, and they tell me to take you up to the bridge. Call that job satisfaction? Cause I don't. </p>
-          <p id="author" class="text-right">-Marvin The Paranoid Android</p>
+  <body>
+    <div id="main">
+      <div id="qm" class="container-fluid text-center">
+        <div class="row">
+          <div id="marvin_container" class="col-sm-6">
+            <img id="marvin" class="img-responsive" src="images/marvin.png">
+            <div id="button_container">
+              <button id="btnQ" type="button" class="btn btn-default">Quote</button>
+              <button id="btnTweet" type="button" class="btn btn-default" onClick="tweet()">Tweet <i class="fa  fa-twitter fa-twitter-1x"></i>
+              </button>
+            </div>
+          </div>
+
+          <div id="globe_container" class="col-sm-6 text-center">
+            <img id="globe" class="img-responsive" src="images/globe.gif">
+            <div id="earthShade">
+              <div id="quote_container">
+                <p id="quote"><i class="fa fa-quote-left fa-1x fa-pull-left fa-border" aria-hidden="true"></i>Mostly Harmless
+                </p>
+                <p id="author" class="text-right"></p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-</body>
+  </body>
 
 </html>
