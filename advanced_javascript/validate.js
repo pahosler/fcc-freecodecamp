@@ -20,8 +20,15 @@
 // otherwise return false.
 
 function telephoneCheck(str) {
-  // Good luck!
-  return true;
+    // Good luck!
+    var re = [/(?:\d{3}|\(\d{3}\)\s|\d{3}\s|\(\d{3}\))([-\/\. ])\d{3}\1\d{4}/g,/\d{10,10}/,
+     '(555)555-5555', '(555) 555-5555', '555 555 5555', '5555555555', '1 555 555 5555'];
+var myArray = re[1].test("0123455678");
+console.log(myArray);
+myArray = re[0].test("555 555 5555");
+
+console.log(myArray);
+    return true;
 }
 
 
