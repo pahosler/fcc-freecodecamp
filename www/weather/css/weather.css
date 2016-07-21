@@ -1,4 +1,114 @@
+/*body, div, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, img, form, fieldset, blockquote {
+
+	margin: 0; padding: 0; border: 0;
+
+}
+*/
+
+body {
+    background-image: url(../images/warm.png);
+    background-size: cover;
+}
+.weather-container {
+    margin: auto;
+    position: relative;
+    height: 584px;
+    width: 320px;
+    background-image: url(../images/warm.png);
+    background-size: cover;
+}
+.weather {
+    margin: auto;
+    z-index: -1;
+    height: 50%;
+    width: 50%;
+}
+.location-container {
+    margin: auto;
+    height: 136px;
+    width: 320px;
+    border: solid 1px #000;
+}
+.forecast-container {
+    position: relative;
+    height: 224px;
+    width: 320px;
+    background-image: url(../images/forecast-container.png);
+    //z-index: auto;
+    border: solid 1px #000;
+    background-size: cover;
+}
+.next-day-container {
+  position: relative;
+    height: 224px;
+    width: 320px;
+    background-image: url(../images/nextdays-container.png);
+    z-index: auto;
+    border: solid 1px #000;
+    background-size: cover;
+}
 #weatherImage {
-  border: solid 1px #fff;
-  border-radius: 50%;
+    position: absolute;
+    border: solid 1px ;
+    border-radius: 50%;
+  //  padding-bottom: 20px;
+    height: 150px;
+    width: 150px;
+    right: 15px;
+    top: 15px;
+    //z-index:1;
+}
+#forecast {
+    height: 584px;
+    width: 320px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+#nextday {
+    height: 584px;
+    width: 320px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+#localtemp {
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 10px;
+    left: 10px;
+}
+#cond {
+    margin-top: 0px;
+    margin-left: 10px;
+    padding: 10px;
+    left: 10px;
+}
+#weather {
+    position: absolute;
+    bottom: 0px;
+}
+/*ul> li {
+    margin: auto;
+    padding: 5px;
+    display: inline-block;
+}*/
+ul { padding:5px; margin:auto; white-space:nowrap; }
+ li { width: 60%; list-style-type:none; display:inline-block; }
+#day1,#day2,#day3 {
+  border: solid 1px #000;
+  height: 125px;
+  width: 125px;
+}
+#future {
+  position :absolute;
+  top: 50px;
+  left: 10px;
+}
+#weather img{
+  height:20px;
+  width:20px;
+}
+#hilo,#hum,#wind {
+
 }

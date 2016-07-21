@@ -25,12 +25,37 @@ $(document).ready(function () {
       longitude: lng
     };
   }
+  function yourCity(match,p1){
+    console.log("HELLLLLOOOOOOO");
+    console.log("match",match);
+    return match;
+  }
+  function getHiLo(arr){
+    console.log(arr);
+    var str = arr[0]+"/"+arr[1];
+    return str;
+  }
+  function getFutureDays(arr){
+    var futureArr=[];
+    futureArr[0] = arr[2];
+    futureArr[1] = arr[4];
+    return futureArr;
+  }
+  function getFutureImages(arr){
+    var futureImages = [];
+    futureImages[0] = arr[2];
+    futureImages[1] = arr[4];
+    return futureImages;
+  }
 
   function weather(forecast) {
-    this.location = forecast.productionCenter;
+    this.location = (function (){
+      var yourLocal = /([^,])+/.exec(forecast.currentobservation.name);
+      return yourLocal[0]+", "+forecast.currentobservation.state;
+    });
     this.date = forecast.currentobservation.Date;
     this.dewpoint = forecast.currentobservation.Dewp;
-    this.humidity = forecast.currentobservation.Rehl;
+    this.humidity = forecast.currentobservation.Relh;
     this.windspeed = {
       mph : forecast.currentobservation.Winds,
       kph : Math.round(forecast.currentobservation.Winds * 1.6)
@@ -41,6 +66,9 @@ $(document).ready(function () {
       F: forecast.currentobservation.Temp,
       C: Math.round((forecast.currentobservation.Temp - 32) * (5 / 9))
     };
+    this.hilo = getHiLo(forecast.data.temperature);
+    this.future = getFutureDays(forecast.time.startPeriodName);
+    this.futureImages = getFutureImages(forecast.data.iconLink);
     this.windd = (function () {
       var wind = forecast.currentobservation.Windd;
       if (wind > 0 && wind < 90) {
@@ -89,9 +117,18 @@ $(document).ready(function () {
       //lw(forecast);
       console.log("local temp from: ", lw.temperture.F,lw.temperture.C,lw.windd(),lw.windspeed+"mph");
 
-      $("#forecast").html("<p>" + lw.location + "<br>" + lw.condition);
+      $("#location").text(lw.location());
       $("#temp").bootstrapToggle({ on: lw.temperture.C, off: lw.temperture.F, size: 'large', onstyle: 'default', offstyle: 'default' });
       $("#weatherImage").attr('src',lw.weatherImage);
+      $("#hum").contents().last().replaceWith(lw.humidity+"%");
+      $("#wind").contents().last().replaceWith(lw.windd()+" "+lw.windspeed.mph+"mph");
+      $("#cond").contents().last().replaceWith(lw.condition);
+      $("#localtemp").contents().last().replaceWith(lw.temperture.F);
+      $("#hilo").contents().last().replaceWith(lw.hilo);
+      $("#day1").attr('src',lw.futureImages[0]);
+      $("#day2").attr('src',lw.futureImages[1]);
+      $("#tomorrow").contents().last().replaceWith(lw.future[0]);
+      $("#dayafter").contents().last().replaceWith(lw.future[1]);
 
     });
 
