@@ -8,12 +8,20 @@ var zipCode = defaultZip;
 var imperial = true;
 $(document).ready(function() {
 
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(weatherData);
-    } else {
-        alert("geolocation not supported");
-        zipLocate(zipCode);
-    }
+  $.getJSON("http://ip-api.com/json", function(ipLocation) {
+    console.log(ipLocation);
+    var position = new geoPos();
+    position.coords.latitude = ipLocation.lat;
+    position.coords.longitude = ipLocation.lon;
+    weatherData(position);
+  });
+    function geoPos(lat, lng) {
+    this.coords = {
+      latitude: lat,
+      longitude: lng
+    };
+  }
+
 
     function getHiLo(arr,imperial) {
         var str;
