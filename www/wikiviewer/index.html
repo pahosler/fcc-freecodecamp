@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="js/wikiviewer.js"></script>
+    <script src="js/mustache.min.js" ;></script>
+
+</head>
+
+<body>
+    <div id="search-module" class="container">
+        <input id="searchterm">
+        <button id="search">search</button>
+        <p id="feelinglucky"><a href="https://en.wikipedia.org/wiki/Special:Random">Feeling Lucky</a></p>
+        <script id="search-template" type="text/template">
+            {{wikisearch}}
+            <div class="row">
+                <div class="col-sm-4 col-md-4">
+                    <span>{{.}}</span>
+                    <div id="results">
+                        <div><a href='http://en.wikipedia.org/wiki/" + encodeURIComponent(item.title) + "'>" + item.title + "</a>
+                            <br>" + item.snippet + "<br><br>"
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/wikisearch}}
+
+        </script>
+
+
+    </div>
+</body>
