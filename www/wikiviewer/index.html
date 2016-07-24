@@ -2,18 +2,19 @@
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js" ;></script>
     <script src="js/wikiviewer.js"></script>
-    <script src="js/mustache.min.js" ;></script>
+
 
 </head>
 
 <body>
-    <div id="search-module" class="container">
+    <div id="search-module" class="container-fluid">
         <input id="searchterm">
         <button id="search">search</button>
         <p id="feelinglucky"><a href="https://en.wikipedia.org/wiki/Special:Random">Feeling Lucky</a></p>
         <script id="search-template" type="text/template">
-            {{wikisearch}}
+            {{#wikisearch}}
             <div class="row">
                 <div class="col-sm-4 col-md-4">
                     <span>{{.}}</span>
