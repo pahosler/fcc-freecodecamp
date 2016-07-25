@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
@@ -10,25 +11,22 @@
 
 <body>
     <div id="search-module" class="container-fluid">
-        <input id="searchterm">
-        <button id="search">search</button>
+        <input placeholder="search Wikipedia" type="text">
+        <button>search</button>
         <p id="feelinglucky"><a href="https://en.wikipedia.org/wiki/Special:Random">Feeling Lucky</a></p>
+        <div id="results">
+        </div>
         <script id="search-template" type="text/template">
+          <ul id="wikis">
             {{#wikisearch}}
-            <div class="row">
-                <div class="col-sm-4 col-md-4">
-                    <span>{{.}}</span>
-                    <div id="results">
-                        <div><a href='http://en.wikipedia.org/wiki/" + encodeURIComponent(item.title) + "'>" + item.title + "</a>
-                            <br>" + item.snippet + "<br><br>"
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <li>
+              <span><a href='http://en.wikipedia.org/wiki/{{.}}'>{{.}}</a><br>{{.}}<br></span>
+            </li>
             {{/wikisearch}}
-
         </script>
 
 
     </div>
 </body>
+
+</html>
