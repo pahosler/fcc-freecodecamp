@@ -23,8 +23,8 @@ $(document).ready(function() {
         render: function() {
             var data = {
                 uri: results.info.uri,
-              //  title: results.info.title,
-              //  wiki: results.info.wiki,
+               title: results.info.title,
+               wiki: results.info.wiki,
             };
             console.log("time to render...",data);
             for (var i = 0; i < results.info.uri.length; ++i) {
