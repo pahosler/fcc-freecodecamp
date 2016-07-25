@@ -6,3 +6,4 @@ function translatePigLatin(str) {
 
 console.log(translatePigLatin("candy"));
 console.log(translatePigLatin("throw"));
+console.log(translatePigLatin("kjslkdjfsdjfhlob"));

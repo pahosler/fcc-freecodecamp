@@ -14,18 +14,17 @@
         <input placeholder="search Wikipedia" type="text">
         <button>search</button>
         <p id="feelinglucky"><a href="https://en.wikipedia.org/wiki/Special:Random">Feeling Lucky</a></p>
-        <div id="results">
-        </div>
-        <script id="search-template" type="text/template">
-          <ul id="wikis">
-            {{#wikisearch}}
-            <li>
-              <span><a href='http://en.wikipedia.org/wiki/{{.}}'>{{.}}</a><br>{{.}}<br></span>
-            </li>
-            {{/wikisearch}}
-        </script>
+        <ul id="wikis">
+          <div id="results">
 
+            <script id="search-template" type="text/template">
+                {{#wikisearch}}
+                    <span {{#uri}}{{.}}{{/uri}}{{#title}}{{.}}{{/title}}</a><br>{{#wiki}}{{.}}{{/wiki}}<br></span>
+                {{/wikisearch}}
+            </script>
+          </div>
 
+        </ul>
     </div>
 </body>
 
