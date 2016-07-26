@@ -1,6 +1,7 @@
 $(document).ready(function() {
     var results = {
         info: {
+          uri: [],
           title: [],
           wiki: []
         },
@@ -22,10 +23,10 @@ $(document).ready(function() {
             this.$button.on('click', this.addResults.bind(this));
         },
         render: function() {
-          for (var i=0; i<this.info.title.length;i++){
+          for (var i=0; i<this.info.uri.length;i++){
             var data = {
               "wikisearch": [
-              {"uri": "<a href='http://en.wikipedia.org/wiki/"+encodeURIComponent(this.info.title[i])+"'>"},
+              {"uri": this.info.uri[i]},
               {"title": this.info.title[i]},
               {"wiki": this.info.wiki[i]}
             ]};
@@ -34,7 +35,6 @@ $(document).ready(function() {
         },
         addResults: function() {
             var q = this.$input.val();
-            this.$input.val('');
             $.getJSON("http://en.wikipedia.org/w/api.php?callback=?", {
                     srsearch: q,
                     action: "query",
@@ -43,10 +43,9 @@ $(document).ready(function() {
                 },
                 function(data) {
                     $.each(data.query.search, function(i, item) {
+                        results.info.uri.push("http://en.wikipedia.org/wiki/"+encodeURIComponent(item.title));
                         results.info.title.push(item.title);
                         results.info.wiki.push(item.snippet);
-                        console.log("encode title",encodeURIComponent(item.title));
-                        console.log("snip",item.snippet);
                     });
                 });
                 this.render();
