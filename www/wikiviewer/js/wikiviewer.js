@@ -6,10 +6,14 @@ $(document).ready(function() {
           wiki: []
         },
         init: function() {
-            console.log("INIT!");
             this.cacheDom();
             this.bindEvents();
-            this.addResults();
+            //this.getResults();
+            // this.info =  {
+            //   uri: [],
+            //   title: [],
+            //   wiki:[]
+            // }
         },
         cacheDom: function() {
             this.$el = $("#search-module");
@@ -20,21 +24,28 @@ $(document).ready(function() {
             this.template = this.$el.find('#search-template').html();
         },
         bindEvents: function() {
-            this.$button.on('click', this.addResults.bind(this));
+            this.$input.on('keyup', this.getResults.bind(this));
         },
         render: function() {
           for (var i=0; i<this.info.uri.length;i++){
             var data = {
               "wikisearch": [
-              {"uri": this.info.uri[i]},
-              {"title": this.info.title[i]},
-              {"wiki": this.info.wiki[i]}
+              {"uri": "http://en.wikipedia.org/wiki/"+encodeURIComponent(this.info.uri[i]),
+              "title": this.info.title[i],
+              "wiki": this.info.wiki[i]
+              }
             ]};
+            console.log(data);
                 this.$results.append(Mustache.render(this.template, data));
           }
         },
-        addResults: function() {
+        getResults: function() {
             var q = this.$input.val();
+            this.$results.find("ul").remove();
+            this.info.uri=[];
+            this.info.title=[];
+            this.info.wiki=[];
+
             $.getJSON("http://en.wikipedia.org/w/api.php?callback=?", {
                     srsearch: q,
                     action: "query",
@@ -43,12 +54,13 @@ $(document).ready(function() {
                 },
                 function(data) {
                     $.each(data.query.search, function(i, item) {
-                        results.info.uri.push("http://en.wikipedia.org/wiki/"+encodeURIComponent(item.title));
+                        results.info.uri.push(item.title);
                         results.info.title.push(item.title);
                         results.info.wiki.push(item.snippet);
                     });
+                    results.render();
+
                 });
-                this.render();
         }
     };
     results.init();
