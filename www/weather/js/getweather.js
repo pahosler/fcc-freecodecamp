@@ -31,15 +31,15 @@ $(document).ready(function() {
 
     function getFutureDays(arr) {
         var futureArr = [];
-        futureArr[0] = arr[1];
-        futureArr[1] = arr[3];
+        futureArr[0] = arr[2];
+        futureArr[1] = arr[4];
         return futureArr;
     }
 
     function getFutureImages(arr) {
         var futureImages = [];
-        futureImages[0] = arr[1];
-        futureImages[1] = arr[3];
+        futureImages[0] = arr[2];
+        futureImages[1] = arr[4];
         return futureImages;
     }
 
