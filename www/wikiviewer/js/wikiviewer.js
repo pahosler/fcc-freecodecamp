@@ -8,12 +8,6 @@ $(document).ready(function() {
         init: function() {
             this.cacheDom();
             this.bindEvents();
-            //this.getResults();
-            // this.info =  {
-            //   uri: [],
-            //   title: [],
-            //   wiki:[]
-            // }
         },
         cacheDom: function() {
             this.$el = $("#search-module");
