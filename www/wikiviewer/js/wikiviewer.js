@@ -18,7 +18,13 @@ $(document).ready(function() {
             this.template = this.$el.find('#search-template').html();
         },
         bindEvents: function() {
-            this.$input.on('keyup', this.getResults.bind(this));
+            this.$button.on('click', this.getResults.bind(this));
+            this.$input.on('keypress', function(e) {
+        if(e.which == 13){
+           results.$button.click();
+          return false;
+           }
+      }).bind(this);
         },
         render: function() {
           for (var i=0; i<this.info.uri.length;i++){
