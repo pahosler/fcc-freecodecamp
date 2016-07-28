@@ -16,7 +16,7 @@
         <button class="search">search</button>
         <button class="featured">Featured</button>
 </div>
-      <div id="results">
+      <div id="resultsAll">
           <script id="search-template" type="text/template">
             <ul class="twitchTV">
               {{#wikisearch}}
@@ -27,6 +27,42 @@
             <ul id="wikis">
           </script>
       </div>
+      <div id="resultsOffline">
+          <script id="search-template" type="text/template">
+            <ul class="twitchTV">
+              {{#wikisearch}}
+              <li>
+              <div id="title"> <a href= {{uri}}> {{title}} </a><br></div><div id="wiki"><span>{{{wiki}}}</span></div>
+              </li>
+              {{/wikisearch}}
+            <ul id="wikis">
+          </script>
+      </div>
+      <div id="resultsOnline">
+          <script id="search-template" type="text/template">
+            <ul class="twitchTV">
+              {{#wikisearch}}
+              <li>
+              <div id="title"> <a href= {{uri}}> {{title}} </a><br></div><div id="wiki"><span>{{{wiki}}}</span></div>
+              </li>
+              {{/wikisearch}}
+            <ul id="wikis">
+          </script>
+      </div>
+      <div id="resultsFeatured">
+          <script id="search-template" type="text/template">
+            <ul class="twitchTV">
+              {{#wikisearch}}
+              <li>
+              <div id="title"> <a href= {{uri}}> {{title}} </a><br></div><div id="wiki"><span>{{{wiki}}}</span></div>
+              </li>
+              {{/wikisearch}}
+            <ul id="wikis">
+          </script>
+      </div>
+
+
+
 </div>
 </body>
 

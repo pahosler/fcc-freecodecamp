@@ -12,14 +12,16 @@
 
 <body>
     <div id="search-module" class="container-fluid">
-        <div class="searchy">
+      <div class="row">
+        <div class="searchy col-xs-1">
             <h1>Wiki Search</h1>
             <input placeholder="search Wikipedia" type="text">
             <button>search</button>
             <p id="feelinglucky"><a href="https://en.wikipedia.org/wiki/Special:Random">Feeling Lucky</a></p>
         </div>
-
-        <div id="results" class="row col-xs-12 col-sm-12 col-md-12">
+      </div>
+        <div class="row">
+        <div id="results" class="col-xs-1">
             <script id="search-template" type="text/template">
                 <ul id="wikis">
                     {{#wikisearch}}
@@ -33,6 +35,7 @@
                     <ul id="wikis">
             </script>
         </div>
+      </div>
     </div>
 </body>
 
