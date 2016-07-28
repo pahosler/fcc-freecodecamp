@@ -9,16 +9,16 @@
 </head>
 
 <body>
-  <div id="search-module" class="container-fluid">
+  <div id="twitch-module" class="container-fluid">
 <div class="searchy">
-  <h1>Wiki Search</h1>
-  <input placeholder="search Wikipedia" type="text">
-        <button>search</button>
-  <p id="feelinglucky"><a href="https://en.wikipedia.org/wiki/Special:Random">Feeling Lucky</a></p>
+  <h1>TwitchTV</h1>
+  <input placeholder="search TwitchTV" type="text">
+        <button class="search">search</button>
+        <button class="featured">Featured</button>
 </div>
       <div id="results">
           <script id="search-template" type="text/template">
-            <ul id="wikis">
+            <ul class="twitchTV">
               {{#wikisearch}}
               <li>
               <div id="title"> <a href= {{uri}}> {{title}} </a><br></div><div id="wiki"><span>{{{wiki}}}</span></div>
