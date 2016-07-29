@@ -35,13 +35,12 @@ $(document).ready(function() {
               "wiki": this.info.wiki[i]
               }
             ]};
-            console.log(data);
                 this.$results.append(Mustache.render(this.template, data));
           }
         },
         getResults: function() {
             var q = this.$input.val();
-            this.$results.find("ul").remove();
+            this.$results.find('.box').remove();
             this.info.uri=[];
             this.info.title=[];
             this.info.wiki=[];
