@@ -2,9 +2,21 @@
 <html>
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+  <!-- bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- mustache templates -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js" ;></script>
+
+  <!-- local javascripts -->
     <script src="js/wikiviewer.js"></script>
+
+  <!-- local stylesheets -->
     <link rel="stylesheet" href="css/wikiviewer.css">
 
 
@@ -13,28 +25,33 @@
 <body>
     <div id="search-module" class="container-fluid">
       <div class="row">
-        <div class="searchy col-xs-1">
+        <div class="searchy col-md-12">
             <h1>Wiki Search</h1>
             <input placeholder="search Wikipedia" type="text">
             <button>search</button>
             <p id="feelinglucky"><a href="https://en.wikipedia.org/wiki/Special:Random">Feeling Lucky</a></p>
         </div>
       </div>
-        <div class="row">
-        <div id="results" class="col-xs-1">
+
+        <div id="results">
+          <div id="wikis" class="row">
             <script id="search-template" type="text/template">
-                <ul id="wikis">
+                <!-- <div id="spacer" class="col-md-2"> -->
+                  <div class="box col-md-2 col-sm-6">
+
                     {{#wikisearch}}
-                    <li>
-                        <div id="title"> <a href={ {uri}}> {{title}} </a>
+
+                        <div id="title"> <a href= {{uri}}> {{title}} </a>
                             <br>
                         </div>
-                        <div id="wiki"><span>{{{wiki}}}</span></div>
-                    </li>
+                        <div id="wiki">{{{wiki}}}</div>
+
                     {{/wikisearch}}
-                    <ul id="wikis">
+                  </div>
+
+                <!-- </div> -->
             </script>
-        </div>
+          </div>
       </div>
     </div>
 </body>
