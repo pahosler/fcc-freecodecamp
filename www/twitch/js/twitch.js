@@ -1,8 +1,7 @@
 $(document).ready(function() {
     var twitch = {
+        stream: ["ESL_SC2", "2GGaming", "usedpizza", "OgamingSC2", "leveluplive", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"],
         info: {
-            stream: ["ESL_SC2", "2GGaming", "usedpizza", "OgamingSC2", "leveluplive", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"],
-            data: "",
             uri: [],
             userLogo: [],
             userName: [],
@@ -47,10 +46,11 @@ $(document).ready(function() {
             }
         },
         getData: function() {
-            for (var stream = 0; stream < this.info.stream.length; stream++) {
-                $.getJSON('https://api.twitch.tv/kraken/streams/' + this.info.stream[stream] + '?callback=?', function(data) {
+            for (var stream = 0; stream < this.stream.length; stream++) {
+                $.getJSON('https://api.twitch.tv/kraken/streams/' + this.stream[stream] + '?callback=?', function(data) {
                     if (data.stream === null) {
                         console.log("OFF LINE!!!");
+                        twitch.getOfflineInfo(data._links.channel);
                     } else {
                         console.log("ON LINE!!!");
                         console.log(data);
@@ -64,18 +64,24 @@ $(document).ready(function() {
         },
         getFeatured: function() {
             $.getJSON('https://api.twitch.tv/kraken/streams/featured', function(data) {
-              for(var i = 0; i<data.featured.length; i++){
-              console.log(data.featured[i].stream.channel.display_name);
-              console.log("followers:",data.featured[i].stream.channel.followers);
-              console.log(data.featured[i].stream.channel.url);
-              console.log(data.featured[i].stream.channel.game);
-              console.log(data.featured[i].stream.channel.status);
-            }
+                for (var i = 0; i < data.featured.length; i++) {
+                    console.log(data.featured[i].stream.channel.display_name);
+                    console.log("followers:", data.featured[i].stream.channel.followers);
+                    console.log(data.featured[i].stream.channel.url);
+                    console.log(data.featured[i].stream.channel.game);
+                    console.log(data.featured[i].stream.channel.status);
+                }
             });
         },
         searchTwitch: function() {
-            $.getJSON('https://api.twitch.tv/kraken/search/streams?q=' + this.$input.val() , function(data) {
+            $.getJSON('https://api.twitch.tv/kraken/search/streams?q=' + this.$input.val(), function(data) {
                 console.log(data);
+            });
+        },
+        getOfflineInfo: function(channels) {
+            $.getJSON(channels + '?callback=?', function(data) {
+                console.log("Off Line Info", data);
+                return;
             });
         }
     }
