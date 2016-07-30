@@ -29,7 +29,7 @@
             <!-- These two buttons switch the layout variable,
   			 which causes the correct UL to be shown. -->
             <div style="float:left"> <input type="text" v-model="searchString" placeholder="TWITCH.TV" /></div>
-            <a class="featured" v-on:click="articles= 'getFeatured()'"></a>
+            <a class="featured" v-on:click='my-component =="featured()"'></a>
             <a class="list-online" v-bind:class="{'active': layout== 'online'}" v-on:click="layout = 'online'"></a>
             <a class="list-offline" v-bind:class="{'active': layout== 'offline'}" v-on:click="layout = 'offline'"></a>
             <a class="list-icon" v-bind:class="{ 'active': layout == 'list'}" v-on:click="layout = 'list'"></a>
