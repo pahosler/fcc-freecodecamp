@@ -2,10 +2,14 @@ $(document).ready(function() {
     var twitch = {
         stream: ["ESL_SC2", "2GGaming", "usedpizza", "OgamingSC2", "leveluplive", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"],
         info: {
-            uri: [],
-            userLogo: [],
-            userName: [],
-            userStatus: []
+            uri: '',
+            userLogo: '',
+            userName: '',
+            userStatus: '',
+            userBroadcast: '',
+            onoffS: '',
+            onoffL: '',
+            data: []
         },
         init: function() {
             this.cacheDom();
@@ -32,44 +36,45 @@ $(document).ready(function() {
             this.$buttonFeatured.on('click', this.getFeatured.bind(this));
         },
         render: function() {
-            for (var i = 0; i < this.info.uri.length; i++) {
-                var data = {
-                    "twitchTV": [{
-                        "uri": "http://en.wikipedia.org/wiki/" + encodeURIComponent(this.info.uri[i]),
-                        "userLogo": this.info.userImage[i],
-                        "userName": this.info.userName[i],
-                        "userStatus": this.info.userStatus[i],
-                        "future": this.info.future[i] //this doesn't exit yet
-                    }]
-                };
-                this.$results.append(Mustache.render(this.template, data));
-            }
+                this.info.data.push({
+                    "url": this.info.uri,
+                    "title": this.info.userName,
+                    "image": this.info.userLogo,
+                    "status": this.info.userStatus,
+                    "broadcast": this.info.userBroadcast,
+                    "onoffL" : this.info.onoffL,
+                    "onoffS" : this.info.onoffS
+                  });
         },
         getData: function() {
             for (var stream = 0; stream < this.stream.length; stream++) {
                 $.getJSON('https://api.twitch.tv/kraken/streams/' + this.stream[stream] + '?callback=?', function(data) {
                     if (data.stream === null) {
-                        console.log("OFF LINE!!!");
                         twitch.getOfflineInfo(data._links.channel);
                     } else {
-                        console.log("ON LINE!!!");
-                        console.log(data);
-
+                            twitch.info.userLogo=data.stream.channel.logo;
+                            twitch.info.uri=data.stream.channel.url;
+                            twitch.info.userName=data.stream.channel.display_name;
+                            twitch.info.userStatus=data.stream.channel.status;
+                            twitch.info.userBroadcast="On Line";
+                            twitch.info.onoffS="onsmall";
+                            twitch.info.onoffL="onlarge";
+                        twitch.render();
                     }
-
-                    // twitch.info.data = data;
-
                 });
             }
         },
         getFeatured: function() {
+          this.info.data=[];
             $.getJSON('https://api.twitch.tv/kraken/streams/featured', function(data) {
                 for (var i = 0; i < data.featured.length; i++) {
-                    console.log(data.featured[i].stream.channel.display_name);
-                    console.log("followers:", data.featured[i].stream.channel.followers);
-                    console.log(data.featured[i].stream.channel.url);
-                    console.log(data.featured[i].stream.channel.game);
-                    console.log(data.featured[i].stream.channel.status);
+                    twitch.info.userName=data.featured[i].stream.channel.display_name;
+                    twitch.info.uri=data.featured[i].stream.channel.url;
+                    twitch.info.userLogo=data.featured[i].stream.channel.logo;
+                    twitch.info.userStatus=data.featured[i].stream.channel.status;
+                    twitch.info.onoffS="onsmall";
+                    twitch.info.onoffL="onlarge";
+                    twitch.render();
                 }
             });
         },
@@ -80,74 +85,63 @@ $(document).ready(function() {
         },
         getOfflineInfo: function(channels) {
             $.getJSON(channels + '?callback=?', function(data) {
-                console.log("Off Line Info", data);
-                return;
+                    twitch.info.userLogo=data.logo;
+                    twitch.info.uri=data.url;
+                    twitch.info.userName=data.display_name;
+                    twitch.info.userStatus=data.status;
+                    twitch.info.userBroadcast="Off Line";
+                    twitch.info.onoffS="offsmall";
+                    twitch.info.onoffL="offlarge";
+                    twitch.render();
+
             });
+        },
+        twitchData: function() {
+          return this.info.data;
         }
     }
+
     twitch.init();
 
-});
+    Vue.filter('searchFor', function (value, searchString) {
 
-// example JSON output (ESL_SC2)
-//
-// {
-//     "stream": {
-//         "_id": 22503011104,
-//         "game": "StarCraft II",
-//         "viewers": 450,
-//         "created_at": "2016-07-25T15:57:28Z",
-//         "video_height": 720,
-//         "average_fps": 50,
-//         "delay": 0,
-//         "is_playlist": false,
-//         "_links": {
-//             "self": "https://api.twitch.tv/kraken/streams/esl_sc2"
-//         },
-//         "preview": {
-//             "small": "https://static-cdn.jtvnw.net/previews-ttv/live_user_esl_sc2-80x45.jpg",
-//             "medium": "https://static-cdn.jtvnw.net/previews-ttv/live_user_esl_sc2-320x180.jpg",
-//             "large": "https://static-cdn.jtvnw.net/previews-ttv/live_user_esl_sc2-640x360.jpg",
-//             "template": "https://static-cdn.jtvnw.net/previews-ttv/live_user_esl_sc2-{width}x{height}.jpg"
-//         },
-//         "channel": {
-//             "mature": false,
-//             "status": "RERUN: Strelok vs. MMA - Group A Ro16 - WCS European Premier League - StarCraft 2",
-//             "broadcaster_language": "en",
-//             "display_name": "ESL_SC2",
-//             "game": "StarCraft II",
-//             "language": "en",
-//             "_id": 30220059,
-//             "name": "esl_sc2",
-//             "created_at": "2012-05-02T09:59:20Z",
-//             "updated_at": "2016-07-27T09:32:57Z",
-//             "delay": null,
-//             "logo": "https://static-cdn.jtvnw.net/jtv_user_pictures/esl_sc2-profile_image-d6db9488cec97125-300x300.jpeg",
-//             "banner": null,
-//             "video_banner": "https://static-cdn.jtvnw.net/jtv_user_pictures/esl_sc2-channel_offline_image-5a8657f8393c9d85-1920x1080.jpeg",
-//             "background": null,
-//             "profile_banner": "https://static-cdn.jtvnw.net/jtv_user_pictures/esl_sc2-profile_banner-f8295b33d1846e75-480.jpeg",
-//             "profile_banner_background_color": "#050506",
-//             "partner": true,
-//             "url": "https://www.twitch.tv/esl_sc2",
-//             "views": 58826183,
-//             "followers": 131430,
-//             "_links": {
-//                 "self": "http://api.twitch.tv/kraken/channels/esl_sc2",
-//                 "follows": "http://api.twitch.tv/kraken/channels/esl_sc2/follows",
-//                 "commercial": "http://api.twitch.tv/kraken/channels/esl_sc2/commercial",
-//                 "stream_key": "http://api.twitch.tv/kraken/channels/esl_sc2/stream_key",
-//                 "chat": "http://api.twitch.tv/kraken/chat/esl_sc2",
-//                 "features": "http://api.twitch.tv/kraken/channels/esl_sc2/features",
-//                 "subscriptions": "http://api.twitch.tv/kraken/channels/esl_sc2/subscriptions",
-//                 "editors": "http://api.twitch.tv/kraken/channels/esl_sc2/editors",
-//                 "teams": "http://api.twitch.tv/kraken/channels/esl_sc2/teams",
-//                 "videos": "http://api.twitch.tv/kraken/channels/esl_sc2/videos"
-//             }
-//         }
-//     },
-//     "_links": {
-//         "self": "https://api.twitch.tv/kraken/streams/esl_sc2",
-//         "channel": "https://api.twitch.tv/kraken/channels/esl_sc2"
-//     }
-// }
+        // The first parameter to this function is the data that is to be filtered.
+        // The second is the string we will be searching for.
+
+        var result = [];
+
+        if(!searchString){
+            return value;
+        }
+
+        searchString = searchString.trim().toLowerCase();
+
+        result = value.filter(function(item){
+            if(item.title.toLowerCase().indexOf(searchString) !== -1){
+                return item;
+            }
+        })
+
+        // Return an array with the filtered data.
+
+        return result;
+    });
+
+    var layout = new Vue({
+        el: '#main',
+        data: {
+          layout: 'grid',
+            searchString: "",
+
+            // The data model. These items would normally be requested via AJAX,
+            // but are hardcoded here for simplicity.
+
+            articles: twitch.twitchData()
+        },
+        getFeatured:function () {
+          twitch.getFeatured();
+          // return false;
+        }
+    });
+
+});

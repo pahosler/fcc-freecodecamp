@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+  <!-- bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- vue.js -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
+
+  <!-- mustache templates -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js" ;></script>
+
+  <!-- local javascripts -->
+    <script src="js/twitch.js"></script>
+
+  <!-- local stylesheet -->
+    <link rel="stylesheet" href="css/twitch.css">
+</head>
+
+<body>
+  <div id="twitch-module" class="container-fluid">
+<div class="searchy">
+  <h1>TwitchTV</h1>
+  <input placeholder="search TwitchTV" type="text">
+        <button class="search">search</button>
+        <button class="featured">Featured</button>
+</div>
+      <div id="resultsAll">
+          <script id="search-template" type="text/template">
+            <ul class="twitchTV">
+              {{#wikisearch}}
+              <li>
+              <div id="title"> <a href= {{uri}}> {{title}} </a><br></div><div id="wiki"><span>{{{wiki}}}</span></div>
+              </li>
+              {{/wikisearch}}
+            <ul id="wikis">
+          </script>
+      </div>
+      <div id="resultsOffline">
+          <script id="search-template" type="text/template">
+            <ul class="twitchTV">
+              {{#wikisearch}}
+              <li>
+              <div id="title"> <a href= {{uri}}> {{title}} </a><br></div><div id="wiki"><span>{{{wiki}}}</span></div>
+              </li>
+              {{/wikisearch}}
+            <ul id="wikis">
+          </script>
+      </div>
+      <div id="resultsOnline">
+          <script id="search-template" type="text/template">
+            <ul class="twitchTV">
+              {{#wikisearch}}
+              <li>
+              <div id="title"> <a href= {{uri}}> {{title}} </a><br></div><div id="wiki"><span>{{{wiki}}}</span></div>
+              </li>
+              {{/wikisearch}}
+            <ul id="wikis">
+          </script>
+      </div>
+      <div id="resultsFeatured">
+          <script id="search-template" type="text/template">
+            <ul class="twitchTV">
+              {{#wikisearch}}
+              <li>
+              <div id="title"> <a href= {{uri}}> {{title}} </a><br></div><div id="wiki"><span>{{{wiki}}}</span></div>
+              </li>
+              {{/wikisearch}}
+            <ul id="wikis">
+          </script>
+      </div>
+
+
+
+</div>
+</body>
+
+</html>

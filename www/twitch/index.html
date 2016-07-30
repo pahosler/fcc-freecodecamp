@@ -1,69 +1,64 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js" ;></script>
+
+    <!-- bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- vue.js -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
+
+    <!-- local javascripts -->
     <script src="js/twitch.js"></script>
+
+    <!-- local stylesheet -->
     <link rel="stylesheet" href="css/twitch.css">
 </head>
 
 <body>
-  <div id="twitch-module" class="container-fluid">
-<div class="searchy">
-  <h1>TwitchTV</h1>
-  <input placeholder="search TwitchTV" type="text">
-        <button class="search">search</button>
-        <button class="featured">Featured</button>
-</div>
-      <div id="resultsAll">
-          <script id="search-template" type="text/template">
-            <ul class="twitchTV">
-              {{#wikisearch}}
-              <li>
-              <div id="title"> <a href= {{uri}}> {{title}} </a><br></div><div id="wiki"><span>{{{wiki}}}</span></div>
-              </li>
-              {{/wikisearch}}
-            <ul id="wikis">
-          </script>
-      </div>
-      <div id="resultsOffline">
-          <script id="search-template" type="text/template">
-            <ul class="twitchTV">
-              {{#wikisearch}}
-              <li>
-              <div id="title"> <a href= {{uri}}> {{title}} </a><br></div><div id="wiki"><span>{{{wiki}}}</span></div>
-              </li>
-              {{/wikisearch}}
-            <ul id="wikis">
-          </script>
-      </div>
-      <div id="resultsOnline">
-          <script id="search-template" type="text/template">
-            <ul class="twitchTV">
-              {{#wikisearch}}
-              <li>
-              <div id="title"> <a href= {{uri}}> {{title}} </a><br></div><div id="wiki"><span>{{{wiki}}}</span></div>
-              </li>
-              {{/wikisearch}}
-            <ul id="wikis">
-          </script>
-      </div>
-      <div id="resultsFeatured">
-          <script id="search-template" type="text/template">
-            <ul class="twitchTV">
-              {{#wikisearch}}
-              <li>
-              <div id="title"> <a href= {{uri}}> {{title}} </a><br></div><div id="wiki"><span>{{{wiki}}}</span></div>
-              </li>
-              {{/wikisearch}}
-            <ul id="wikis">
-          </script>
-      </div>
+    <form id="main" v-cloak>
+
+        <div class="bar">
+
+            <!-- These two buttons switch the layout variable,
+  			 which causes the correct UL to be shown. -->
+            <div style="float:left"> <input type="text" v-model="searchString" placeholder="TWITCH.TV" /></div>
+            <a class="featured" v-on:click="articles= 'getFeatured()'"></a>
+            <a class="list-online" v-bind:class="{'active': layout== 'online'}" v-on:click="layout = 'online'"></a>
+            <a class="list-offline" v-bind:class="{'active': layout== 'offline'}" v-on:click="layout = 'offline'"></a>
+            <a class="list-icon" v-bind:class="{ 'active': layout == 'list'}" v-on:click="layout = 'list'"></a>
+            <a class="grid-icon" v-bind:class="{ 'active': layout == 'grid'}" v-on:click="layout = 'grid'"></a>
+        </div>
+
+        <!-- We have two layouts. We choose which one to show depending on the "layout" binding -->
+
+        <ul v-if="layout == 'grid'" class="grid">
+            <!-- A view with big photos and no text -->
+            <li v-for="a in articles | searchFor searchString">
+                <h2 class={{a.onoffL}}>{{a.broadcast}}</h2>
+                <a v-bind:href="a.url" target="_blank"><img v-bind:src="a.image" /></a>
+            </li>
+        </ul>
+
+        <ul v-if="layout == 'list'" class="list">
+            <!-- A compact view smaller photos and titles -->
+            <li v-for="a in articles | searchFor searchString">
+                <a v-bind:href="a.url" target="_blank"><img v-bind:src="a.image" /></a>
+                <p>{{a.title}}</p>
+                <p>{{a.status}}</p>
+                <p class={{a.onoffS}}>{{a.broadcast}}</p>
+            </li>
+        </ul>
+
+    </form>
 
 
-
-</div>
 </body>
 
 </html>
