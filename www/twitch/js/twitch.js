@@ -9,6 +9,7 @@ $(document).ready(function() {
             userBroadcast: '',
             onoffS: '',
             onoffL: '',
+            buttonCall: false,
             data: []
         },
         init: function() {
@@ -17,9 +18,10 @@ $(document).ready(function() {
             this.getData();
         },
         cacheDom: function() {
-            this.$el = $("#twitch-module");
+            this.$el = $("#main");
             this.$buttonSearch = this.$el.find('.search');
-            this.$buttonFeatured = this.$el.find('.featured')
+            this.$buttonFeatured = this.$el.find('.featured');
+            this.$buttonMyList = this.$el.find('.buttonMyList');
             this.$input = this.$el.find('input');
             this.$ul = this.$el.find('.twitchTV');
             this.$results = this.$el.find('#results');
@@ -34,6 +36,10 @@ $(document).ready(function() {
                 }
             }).bind(this);
             this.$buttonFeatured.on('click', this.getFeatured.bind(this));
+            this.$buttonMyList.on('click', function(){
+              twitch.info.buttonCall=true;
+              twitch.getData();
+            });
         },
         render: function() {
             this.info.data.push({
@@ -47,6 +53,7 @@ $(document).ready(function() {
             });
         },
         getData: function() {
+          this.info.data=[];
             for (var stream = 0; stream < this.stream.length; stream++) {
                 $.getJSON('https://api.twitch.tv/kraken/streams/' + this.stream[stream] + '?callback=?', function(data) {
                     if (data.stream === null) {
@@ -63,6 +70,9 @@ $(document).ready(function() {
                     }
                 });
             }
+            if(twitch.info.buttonCall){
+              layout.articles=twitch.info.data;
+            }
         },
         getFeatured: function() {
             this.info.data = [];
@@ -72,17 +82,29 @@ $(document).ready(function() {
                     twitch.info.uri = data.featured[i].stream.channel.url;
                     twitch.info.userLogo = data.featured[i].stream.channel.logo;
                     twitch.info.userStatus = data.featured[i].stream.channel.status;
+                    twitch.info.userBroadcast = "On Line";
                     twitch.info.onoffS = "onsmall";
                     twitch.info.onoffL = "onlarge";
-                    console.log(i);
-
                     twitch.render();
                 }
+                layout.articles=twitch.info.data;
             });
         },
         searchTwitch: function() {
-            $.getJSON('https://api.twitch.tv/kraken/search/streams?q=' + this.$input.val(), function(data) {
-                console.log(data);
+          this.info.data=[];
+            $.getJSON('https://api.twitch.tv/kraken/search/channels?q=' + this.$input.val()+'&type=suggest&live=true', function(data) {
+              console.log(data);
+              for (var i = 0; i < data.channels.length; i++) {
+                  twitch.info.userName = data.channels[i].display_name;
+                  twitch.info.uri = data.channels[i].url;
+                  twitch.info.userLogo = data.channels[i].logo;
+                  twitch.info.userStatus = data.channels[i].status;
+                  twitch.info.userBroadcast = "On Line";
+                  twitch.info.onoffS = "onsmall";
+                  twitch.info.onoffL = "onlarge";
+                  twitch.render();
+              }
+              layout.articles=twitch.info.data;
             });
         },
         getOfflineInfo: function(channels) {
@@ -95,7 +117,6 @@ $(document).ready(function() {
                 twitch.info.onoffS = "offsmall";
                 twitch.info.onoffL = "offlarge";
                 twitch.render();
-
             });
         },
         twitchData: function() {
@@ -104,12 +125,7 @@ $(document).ready(function() {
     }
 
     twitch.init();
-    var MyComponent = Vue.extend({
-      featured: function() {
-              twitch.getFeatured();
-          }
-    });
-    Vue.component('my-component', MyComponent);
+
     Vue.filter('searchFor', function(value, searchString) {
 
         // The first parameter to this function is the data that is to be filtered.
@@ -120,14 +136,26 @@ $(document).ready(function() {
         if (!searchString) {
             return value;
         }
-
-        searchString = searchString.trim().toLowerCase();
-
+        if(searchString ===''){
         result = value.filter(function(item) {
             if (item.title.toLowerCase().indexOf(searchString) !== -1) {
                 return item;
             }
-        })
+        });
+      }else if
+          (searchString === 'on' || searchString === 'off') {
+            result = value.filter(function(item) {
+                if (item.broadcast.toLowerCase().indexOf(searchString) !== -1) {
+                    return item;
+                }
+            });
+        } else {
+            result = value.filter(function(item) {
+                if (item.title.toLowerCase().indexOf(searchString) !== -1) {
+                    return item;
+                }
+            });
+        }
 
         // Return an array with the filtered data.
 
