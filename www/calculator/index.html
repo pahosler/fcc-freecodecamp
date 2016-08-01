@@ -1,145 +1,51 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <style>
-  body {
-    background-color: #000;
-    background-image: url(images/machine.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  #calculator {
-    position: absolute;
-    left: 250px;
-    top: 100px;
-    margin: 0 auto;
-    width: 410px;
-    height: 500px;
-    border: solid 5px #555555;
-    border-radius: 25px;
-    background-image: url(images/background.gif);
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  #display {
-    background-color: #000;
-    border: 15px #333333;
-    border-radius: 15px;
-    border-style: solid;
-    margin: 10px auto;
-    height: 90px;
-    width: 285px;
-  }
-  #inner-display {
-    position: absolute;
-    top: 20px;
-    left: 57px;
-    background-color: #000;
-    border: solid 6px #000;
-    border-radius: 20px;
-    height: 90px;
-    width: 285px;
-    margin: 0 auto;
-  }
-  #nixielist {
-    position: relative;
-    margin: auto;
-    left:5px;
-  }
-  #nixielist li {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    position: absolute;
-    top: 0;
-  }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- local stylesheet -->
+  <link rel="stylesheet" href="css/calculator.css">
 
-  #nixielist li, #nixielist a {
-    height: 88px;
-    display: block;
-  }
-  #zero {
-    left: 0px;
-    width: 33px;
-    background: url('images/nixies.png') 0 0;
-  }
-  #one {
-    left: 36px;
-    width: 33px;
-    background: url('images/nixies.png') -130px 0;
-  }
-  #two {
-    left: 70px;
-    width: 33px;
-    background: url('images/nixies.png') -66px 0;
-  }
-  #three {
-    left: 104px;
-    width: 33px;
-    background: url('images/nixies.png') -99px 0;
-  }
-  #four {
-    left: 138px;
-    width: 33px;
-    background: url('images/nixies.png') -33px 0;
-  }
-  #five {
-    left: 172px;
-    width: 33px;
-    background: url('images/nixies.png') -162px 0;
-  }
-  #six {
-    left: 206px;
-    width: 33px;
-    background: url('images/nixies.png') -195px 0;
-  }
-  #seven {
-    left: 240px;
-    width: 33px;
-    background: url('images/nixies.png') -228px 0;
-  }
-  #eight {
-    left: 274px;
-    width: 33px;
-    background: url('images/nixies.png') -260px 0;
-  }
-  #nine {
-    left: 308px;
-    width: 33px;
-    background: url('images/nixies.png') -293px 0;
-  }
-  #blank {
-    left: 342px;
-    width: 33px;
-    background: url('images/nixies.png') -326px 0;
-  }
-  #decimal {
-    left: 376px;
-    width:33px;
-    background: url('images/nixies.png') -359px 0;
-  }
-  </style>
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+  <!-- local javascripts -->
+  <script src="js/calculator.js"></script>
+
+
 </head>
+
 <body>
-  <div id="calculator">
-    <div id="display">
-      <div id="inner-display">
-  <ul id="nixielist">
-    <li id="zero"></li>
-    <li id="one"></li>
-    <li id="two"></li>
-    <li id="three"></li>
-    <li id="four"></li>
-    <li id="five"></li>
-    <li id="six"></li>
-    <li id="seven"></li>
-  </div>
-  </ul>
-  /<div>
+    <div id="calculator">
+        <div id="display">
+            <div id="inner-display">
+                <ul id="nixies">
+                    <li id="nixie0"></li>
+                    <li id="nixie1"></li>
+                    <li id="nixie2"></li>
+                    <li id="nixie3"></li>
+                    <li id="nixie4"></li>
+                    <li id="nixie5"></li>
+                    <li id="nixie6"></li>
+                    <li id="nixie7"></li>
+            </ul>
+          </div>
+        </div>
+        <div id="top-func-keys">
+          <ul id="funckeys">
+            <li id="clear"></li>
+            <li id="memplus"></li>
+            <li id="memminus"></li>
+            <li id="memrecall"></li>
+            <li id="memclear"></li>
+          </ul>
+        </div>
+        <div id="num-keys">
 
-  </div>
-  <div>
+        </div>
+      </div>
 
-  <!-- <image src="images/nixies.png"> -->
+                <!-- <image src="images/.png"> -->
 </body>
+
 </html>

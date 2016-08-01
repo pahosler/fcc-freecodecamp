@@ -1,0 +1,164 @@
+body {
+    background-color: #000;
+    background-image: url(../images/machine.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#calculator {
+    position: absolute;
+    left: 250px;
+    top: 100px;
+    margin: 0 auto;
+    width: 410px;
+    height: 500px;
+    border: solid 5px #555555;
+    border-radius: 25px;
+    background-image: url(../images/background.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#display {
+    background-color: #000;
+    border: 15px #333333;
+    border-radius: 15px;
+    border-style: solid;
+    margin: 10px auto;
+    height: 90px;
+    width: 285px;
+}
+#inner-display {
+    position: absolute;
+    top: 20px;
+    left: 57px;
+    background-color: #000;
+    border: solid 6px #000;
+    border-radius: 20px;
+    height: 90px;
+    width: 285px;
+    margin: 0 auto;
+}
+#nixies {
+    position: relative;
+    margin: auto;
+    left: 5px;
+}
+#nixies li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    top: 0;
+    height: 88px;
+    display: block;
+}
+#nixie7 {
+    left: 0px;
+    width: 33px;
+    background-image: url('../images/nixies.png');
+    background-position: -326px 0; // 0 0;
+}
+#nixie6 {
+    left: 36px;
+    width: 33px;
+    background-image: url('../images/nixies.png');
+    background-position: -326px 0; // -33px 0 ;
+}
+#nixie5 {
+    left: 70px;
+    width: 33px;
+    background-image: url('../images/nixies.png');
+    background-position: -326px 0; // -66px 0;
+}
+#nixie4 {
+    left: 104px;
+    width: 33px;
+    background-image: url('../images/nixies.png');
+    background-position: -326px 0; // -99px 0;
+}
+#nixie3 {
+    left: 138px;
+    width: 33px;
+    background-image: url('../images/nixies.png');
+    background-position: -326px 0; // -130px 0;
+}
+#nixie2 {
+    left: 172px;
+    width: 33px;
+    background-image: url('../images/nixies.png');
+    background-position: -326px 0; // -162 0;
+}
+#nixie1 {
+    left: 206px;
+    width: 33px;
+    background-image: url('../images/nixies.png');
+    background-position: -326px 0; // -195 0;
+}
+#nixie0 {
+    left: 240px; width: 33px;
+    background-image: url('../images/nixies.png');
+    background-position: -33px 0; // -228 0;
+}
+#nixieoff {
+    left: 342    width: 33px;
+    background: url('../images/nixies.png');
+    background-position: -326px 0;
+}
+#nixiedot {
+    left: 376px;
+    width: 33px;
+    background: url('../images/nixies.png');
+    background-position: -359px 0;
+}
+
+/* ul top-func-keys div */
+
+#top-func-keys {
+    position: relative;
+    margin: auto;
+    left: 5px;
+}
+
+/* function keys C,M+,M-,MR,MC*/
+
+#top-func-keys li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    top: 0;
+    height: 70px;
+    width: 70px;
+    display: block;
+    border-color: #000;
+    border-radius: 50%;
+}
+#clear {
+    left: 15px;
+    width: 80px;
+    background: url('../images/funckeys.png') -358px 0;
+    background-size: cover;
+}
+#memplus {
+    left: 93px;
+    width: 80px;
+    background: url('../images/funckeys.png') -430px 0;
+    background-size: cover;
+}
+#memminus {
+    left: 169px;
+    width: 80px;
+    background: url('../images/funckeys.png') -501px 0;
+    background-size: cover;
+}
+#memrecall {
+    left: 243px;
+    width: 80px;
+    background: url('../images/funckeys.png') -573px 0;
+    background-size: cover;
+}
+#memclear {
+    left: 317px;
+    width: 80px;
+    background: url('../images/funckeys.png') -645px 0;
+    background-size: cover;
+}
