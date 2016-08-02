@@ -1,6 +1,6 @@
 $(document).ready(function() {
     var slot = ['#nixie0', '#nixie1', '#nixie2', '#nixie3', '#nixie4', '#nixie5', '#nixie6', '#nixie7'];
-    var nixie = ['0 0', '-33px 0', '-66px 0', '-99px 0', '-130px 0', '-162px 0', '-195px 0', '-228px 0', '-260px 0', '-293px 0', '-359px 0', '-326px 0'];
+    var nixie = ['0 0', '-40px 0', '-80px 0', '-120px 0', '-160px 0', '-200px 0', '-240px 0', '-280px 0', '-320px 0', '-360px 0', '-400px 0', '-440px 0'];
     var calculator = {
         init: function() {
             this.cacheDom();
@@ -69,9 +69,13 @@ $(document).ready(function() {
 
         },
         nixiesOff: function() {
-            for (var i = 0; i < slot.length; ++i) {
-                $(slot[i]).css("background-position", nixie[7]);
-            };
+          var x= 0;
+            setInterval(function() {
+                for (var i = 0; i < slot.length; ++i) {
+                    $(slot[i]).css("background-position", nixie[x]);
+                }
+                x = x > 10 ? 0:x=x+1;
+            }, 1000);
         }
     }
     calculator.init();

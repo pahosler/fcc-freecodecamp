@@ -52,51 +52,51 @@ body {
     display: block;
 }
 #nixie7 {
-    left: 0px;
+    left: 2px;
     width: 33px;
     background-image: url('../images/nixies.png');
     background-position: -326px 0; // 0 0;
 }
 #nixie6 {
-    left: 36px;
+    left: 35px;
     width: 33px;
     background-image: url('../images/nixies.png');
     background-position: -326px 0; // -33px 0 ;
 }
 #nixie5 {
-    left: 70px;
+    left: 68px;
     width: 33px;
     background-image: url('../images/nixies.png');
     background-position: -326px 0; // -66px 0;
 }
 #nixie4 {
-    left: 104px;
+    left: 101px;
     width: 33px;
     background-image: url('../images/nixies.png');
     background-position: -326px 0; // -99px 0;
 }
 #nixie3 {
-    left: 138px;
+    left: 134px;
     width: 33px;
     background-image: url('../images/nixies.png');
     background-position: -326px 0; // -130px 0;
 }
 #nixie2 {
-    left: 172px;
+    left: 167px;
     width: 33px;
     background-image: url('../images/nixies.png');
     background-position: -326px 0; // -162 0;
 }
 #nixie1 {
-    left: 206px;
+    left: 200px;
     width: 33px;
     background-image: url('../images/nixies.png');
     background-position: -326px 0; // -195 0;
 }
 #nixie0 {
-    left: 240px; width: 33px;
+    left: 233px; width: 33px;
     background-image: url('../images/nixies.png');
-    background-position: -33px 0; // -228 0;
+    background-position: 0 0; // -228 0;
 }
 #nixieoff {
     left: 342    width: 33px;
@@ -110,9 +110,9 @@ body {
     background-position: -359px 0;
 }
 
-/* ul top-func-keys div */
+/* ul row-one-keys div */
 
-#top-func-keys {
+#row-one-keys {
     position: relative;
     margin: auto;
     left: 5px;
@@ -120,7 +120,7 @@ body {
 
 /* function keys C,M+,M-,MR,MC*/
 
-#top-func-keys li {
+#row-one-keys li {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -135,30 +135,183 @@ body {
 #clear {
     left: 15px;
     width: 80px;
-    background: url('../images/funckeys.png') -358px 0;
-    background-size: cover;
+    background: url('../images/funckeys-all.png') -358px -70px;
+    background-size: 715px 140px;
 }
 #memplus {
     left: 93px;
     width: 80px;
-    background: url('../images/funckeys.png') -430px 0;
-    background-size: cover;
+    background: url('../images/funckeys-all.png') -430px -70px;
+    background-size: 715px 140px;
 }
 #memminus {
     left: 169px;
     width: 80px;
-    background: url('../images/funckeys.png') -501px 0;
-    background-size: cover;
+    background: url('../images/funckeys-all.png') -501px -70px;
+    background-size: 715px 140px;
 }
 #memrecall {
     left: 243px;
     width: 80px;
-    background: url('../images/funckeys.png') -573px 0;
-    background-size: cover;
+    background: url('../images/funckeys-all.png') -573px -70px;
+    background-size: 715px 140px;
 }
 #memclear {
     left: 317px;
     width: 80px;
-    background: url('../images/funckeys.png') -645px 0;
-    background-size: cover;
+    background: url('../images/funckeys-all.png') -645px -70px;
+    background-size: 715px 140px;
+}
+/* ul row-two-keys div */
+
+#row-two-keys {
+    position: relative;
+    top: 100px;
+    margin: auto;
+    left: 3px;
+}
+
+/* function keys 7,8,9,x,/ */
+
+#row-two-keys li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    top: 0;
+    height: 70px;
+    width: 70px;
+    display: block;
+    border-color: #000;
+    border-radius: 50%;
+}
+#seven {
+    left: 15px;
+    width: 80px;
+    background: url('../images/numkeys-all.png') -501px 0;
+    background-size: 786px 140px;
+}
+#eight {
+    left: 93px;
+    width: 80px;
+    background: url('../images/numkeys-all.png') -573px 0;
+    background-size: 786px 140px;
+}
+#nine {
+    left: 169px;
+    width: 80px;
+    background: url('../images/numkeys-all.png') -645px 0;
+    background-size: 786px 140px;
+}
+#multiply {
+  left: 242px;
+  width: 80px;
+  background: url('../images/funckeys-all.png') -142px -70px;
+  background-size: 715px 140px;
+}
+#divide {
+    left: 317px;
+    width: 80px;
+    background: url('../images/funckeys-all.png') -214px -70px;
+    background-size: 715px 140px;
+}
+/* ul row-three-keys div */
+
+#row-three-keys {
+    position: relative;
+    top: 180px;
+    margin: auto;
+    left: 3px;
+}
+
+/* function keys 4,5,6,+,- */
+
+#row-three-keys li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    top: 0;
+    height: 70px;
+    width: 70px;
+    display: block;
+    border-color: #000;
+    border-radius: 50%;
+}
+#four {
+    left: 15px;
+    width: 80px;
+    background: url('../images/numkeys-all.png') -285px 0;
+    background-size: 786px 140px;
+}
+#five {
+    left: 93px;
+    width: 80px;
+    background: url('../images/numkeys-all.png') -357px 0;
+    background-size: 786px 140px;
+}
+#six {
+    left: 169px;
+    width: 80px;
+    background: url('../images/numkeys-all.png') -429px 0;
+    background-size: 786px 140px;
+}
+#plus {
+  left: 242px;
+  width: 80px;
+  background: url('../images/funckeys-all.png') -2px -70px;
+  background-size: 786px 140px;
+}
+#minus {
+    left: 317px;
+    width: 80px;
+    background: url('../images/funckeys-all.png') -71px -70px;
+    background-size: 715px 140px;
+}
+/* ul row-four-keys div */
+
+#row-four-keys {
+    position: relative;
+    top:260px;
+    margin: auto;
+    left: 3px;
+}
+
+/* function keys 1,2,3,= */
+
+#row-four-keys li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    top: 0;
+    height: 70px;
+    width: 70px;
+    display: block;
+    border-color: #000;
+    border-radius: 50%;
+}
+#one {
+    left: 15px;
+    width: 80px;
+    background: url('../images/numkeys-all.png') -71px 0;
+    background-size: 786px 140px;
+}
+#two {
+    left: 93px;
+    width: 80px;
+    background: url('../images/numkeys-all.png') -143px 0;
+    background-size: 786px 140px;
+}
+#three {
+    left: 169px;
+    width: 80px;
+    background: url('../images/numkeys-all.png') -215px 0;
+    background-size: 786px 140px;
+}
+#equals {
+  left: 242px;
+  width: 80px;
+  background: url('../images/funckeys-all.png') -287px -70px;
+  background-size: 715px 140px;
 }
