@@ -23,7 +23,7 @@ body {
     background-image: url(../images/background.gif);
     background-repeat: no-repeat;
     background-size: cover;
-    box-shadow: 5px 8px 6px #333333;
+    box-shadow: 5px 8px 6px #111111;
 }
 #display {
     background-color: #000;
