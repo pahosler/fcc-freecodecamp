@@ -1,14 +1,21 @@
 body {
     background-color: #000;
-    background-image: url(../images/machine.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+}
+.main {
+  position: relative;
+  margin: 0 auto;
+  background-image: url(../images/machine.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height:820px;
+  width:100%;
+
 }
 #calculator {
-    position: absolute;
-    left: 250px;
-    top: 100px;
-    margin: 0 auto;
+    position: relative;;
+    /*left: 300px;
+    top: 150px;*/
+    margin: 160px auto;
     width: 410px;
     height: 500px;
     border: solid 5px #555555;
