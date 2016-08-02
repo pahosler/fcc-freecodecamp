@@ -18,11 +18,12 @@ body {
     margin: 60px auto;
     width: 410px;
     height: 500px;
-    border: solid 5px #555555;
+    border: solid 5px #333333;
     border-radius: 25px;
     background-image: url(../images/background.gif);
     background-repeat: no-repeat;
     background-size: cover;
+    box-shadow: 5px 8px 6px #333333;
 }
 #display {
     background-color: #000;
