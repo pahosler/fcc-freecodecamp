@@ -7,8 +7,8 @@ body {
   background-image: url(../images/machine.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  height:820px;
-  width:100%;
+  height:600px;
+  width:800;
 
 }
 #calculator {
