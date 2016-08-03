@@ -141,19 +141,19 @@ body {
     border-radius: 50%;
 }
 #clear {
-    left: 15px;
+    left: 317px;
     width: 80px;
     background: url('../images/funckeys-all.png') -358px -70px;
     background-size: 715px 140px;
 }
 #memplus {
-    left: 93px;
+    left: 243px;
     width: 80px;
     background: url('../images/funckeys-all.png') -430px -70px;
     background-size: 715px 140px;
 }
 #memminus {
-    left: 169px;
+    left: 317px;
     width: 80px;
     background: url('../images/funckeys-all.png') -501px -70px;
     background-size: 715px 140px;
@@ -174,7 +174,7 @@ body {
 
 #row-two-keys {
     position: relative;
-    top: 80px;
+    top: 72px;
     margin: auto;
     left: 3px;
 }
@@ -211,23 +211,12 @@ body {
     background: url('../images/numkeys-all.png') -645px 0;
     background-size: 786px 140px;
 }
-#multiply {
-  left: 242px;
-  width: 80px;
-  background: url('../images/funckeys-all.png') -142px -70px;
-  background-size: 715px 140px;
-}
-#divide {
-    left: 317px;
-    width: 80px;
-    background: url('../images/funckeys-all.png') -214px -70px;
-    background-size: 715px 140px;
-}
+
 /* ul row-three-keys div */
 
 #row-three-keys {
     position: relative;
-    top: 160px;
+    top: 142px;
     margin: auto;
     left: 3px;
 }
@@ -264,23 +253,12 @@ body {
     background: url('../images/numkeys-all.png') -429px 0;
     background-size: 786px 140px;
 }
-#plus {
-  left: 242px;
-  width: 80px;
-  background: url('../images/funckeys-all.png') -2px -70px;
-  background-size: 786px 140px;
-}
-#minus {
-    left: 317px;
-    width: 80px;
-    background: url('../images/funckeys-all.png') -71px -70px;
-    background-size: 715px 140px;
-}
+
 /* ul row-four-keys div */
 
 #row-four-keys {
     position: relative;
-    top:240px;
+    top:212px;
     margin: auto;
     left: 3px;
 }
@@ -317,9 +295,23 @@ body {
     background: url('../images/numkeys-all.png') -215px 0;
     background-size: 786px 140px;
 }
+#multiply {
+  left: 242px;
+  width: 80px;
+  background: url('../images/funckeys-all.png') -142px -70px;
+  background-size: 715px 140px;
+}
+#divide {
+    left: 317px;
+    width: 80px;
+    background: url('../images/funckeys-all.png') -214px -70px;
+    background-size: 715px 140px;
+}
+
+/* ul row-five-keys div */
 #row-five-keys {
     position: relative;
-    top:350px;
+    top:282px;
     margin: auto;
     left: 3px;
 }
@@ -354,5 +346,17 @@ body {
     left: 169px;
     width: 80px;
     background: url('../images/funckeys-all.png') -287px -70px;
+    background-size: 715px 140px;
+}
+#plus {
+  left: 242px;
+  width: 80px;
+  background: url('../images/funckeys-all.png') -2px -70px;
+  background-size: 786px 140px;
+}
+#minus {
+    left: 317px;
+    width: 80px;
+    background: url('../images/funckeys-all.png') -71px -70px;
     background-size: 715px 140px;
 }
