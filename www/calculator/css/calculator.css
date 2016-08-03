@@ -1,6 +1,9 @@
 body {
     background-color: #000;
 }
+li {
+  cursor: pointer;
+}
 .main {
   position: relative;
   margin: 0 auto;
@@ -11,6 +14,7 @@ body {
   width:800;
 
 }
+
 #calculator {
     position: relative;;
     /*left: 300px;
@@ -142,33 +146,102 @@ body {
 }
 #clear {
     left: 317px;
-    width: 80px;
-    background: url('../images/funckeys-all.png') -358px -70px;
-    background-size: 715px 140px;
 }
+button.clear {
+  height:70px;
+  width:70px;
+  border-radius: 50%;
+  text-decoration: none;
+  outline-style: none;
+  background: url('../images/funckeys-all.png') -358px -70px;
+  background-size: 715px 140px;
+  border-width: 0;
+}
+button.clear:active {
+  background: url('../images/funckeys-all.png') -358px 0;
+  background-size: 715px 140px;
+}
+
 #memplus {
     left: 243px;
     width: 80px;
-    background: url('../images/funckeys-all.png') -430px -70px;
-    background-size: 715px 140px;
+    /*background: url('../images/funckeys-all.png') -430px -70px;
+    background-size: 715px 140px;*/
 }
+button.memplus {
+  height:70px;
+  width:70px;
+  border-radius: 50%;
+  text-decoration: none;
+  outline-style: none;
+  background: url('../images/funckeys-all.png') -430px -70px;
+  background-size: 715px 140px;
+  border-width: 0;
+}
+button.memplus:active {
+  background: url('../images/funckeys-all.png') -430px 0;
+  background-size: 715px 140px;
+}
+
 #memminus {
     left: 317px;
     width: 80px;
-    background: url('../images/funckeys-all.png') -501px -70px;
-    background-size: 715px 140px;
+    /*background: url('../images/funckeys-all.png') -501px -70px;
+    background-size: 715px 140px;*/
+}
+button.memminus {
+  height:70px;
+  width:70px;
+  border-radius: 50%;
+  text-decoration: none;
+  outline-style: none;
+  background: url('../images/funckeys-all.png') -501px -70px;
+  background-size: 715px 140px;
+  border-width: 0;
+}
+button.memminus:active {
+  background: url('../images/funckeys-all.png') -501px 0;
+  background-size: 715px 140px;
 }
 #memrecall {
     left: 243px;
     width: 80px;
-    background: url('../images/funckeys-all.png') -573px -70px;
-    background-size: 715px 140px;
+    /*background: url('../images/funckeys-all.png') -573px -70px;
+    background-size: 715px 140px;*/
+}
+button.memrecall {
+  height:70px;
+  width:70px;
+  border-radius: 50%;
+  text-decoration: none;
+  outline-style: none;
+  background: url('../images/funckeys-all.png') -573px -70px;
+  background-size: 715px 140px;
+  border-width: 0;
+}
+button.memrecall:active {
+  background: url('../images/funckeys-all.png') -573px 0;
+  background-size: 715px 140px;
 }
 #memclear {
     left: 317px;
     width: 80px;
     background: url('../images/funckeys-all.png') -645px -70px;
     background-size: 715px 140px;
+}
+button.memclear {
+  height:70px;
+  width:70px;
+  border-radius: 50%;
+  text-decoration: none;
+  outline-style: none;
+  background: url('../images/funckeys-all.png') -645px -70px;
+  background-size: 715px 140px;
+  border-width: 0;
+}
+button.memclear:active {
+  background: url('../images/funckeys-all.png') -645px 0;
+  background-size: 715px 140px;
 }
 /* ul row-two-keys div */
 
@@ -196,20 +269,62 @@ body {
 #seven {
     left: 15px;
     width: 80px;
-    background: url('../images/numkeys-all.png') -501px 0;
-    background-size: 786px 140px;
+    /*background: url('../images/numkeys-all.png') -501px 0;
+    background-size: 786px 140px;*/
+}
+button.seven {
+  height:70px;
+  width:70px;
+  border-radius: 50%;
+  text-decoration: none;
+  outline-style: none;
+  background: url('../images/numkeys-all.png') -501px 0;
+  background-size: 786px 140px;
+  border-width: 0;
+}
+button.seven:active {
+  background: url('../images/numkeys-all.png') -500px -69px;
+  background-size: 786px 140px;
 }
 #eight {
     left: 93px;
     width: 80px;
-    background: url('../images/numkeys-all.png') -573px 0;
-    background-size: 786px 140px;
+    /*background: url('../images/numkeys-all.png') -573px 0;
+    background-size: 786px 140px;*/
+}
+button.eight {
+  height:70px;
+  width:70px;
+  border-radius: 50%;
+  text-decoration: none;
+  outline-style: none;
+  background: url('../images/numkeys-all.png') -573px 0;
+  background-size: 786px 140px;
+  border-width: 0;
+}
+button.eight:active {
+  background: url('../images/numkeys-all.png') -572px -69px;
+  background-size: 786px 140px;
 }
 #nine {
     left: 169px;
     width: 80px;
-    background: url('../images/numkeys-all.png') -645px 0;
-    background-size: 786px 140px;
+    /*background: url('../images/numkeys-all.png') -645px 0;
+    background-size: 786px 140px;*/
+}
+button.nine {
+  height:70px;
+  width:70px;
+  border-radius: 50%;
+  text-decoration: none;
+  outline-style: none;
+  background: url('../images/numkeys-all.png') -645px 0;
+  background-size: 786px 140px;
+  border-width: 0;
+}
+button.nine:active {
+  background: url('../images/numkeys-all.png') -644px -69px;
+  background-size: 786px 140px;
 }
 
 /* ul row-three-keys div */
@@ -238,20 +353,62 @@ body {
 #four {
     left: 15px;
     width: 80px;
-    background: url('../images/numkeys-all.png') -285px 0;
-    background-size: 786px 140px;
+    /*background: url('../images/numkeys-all.png') -285px 0;
+    background-size: 786px 140px;*/
+}
+button.four {
+  height:70px;
+  width:70px;
+  border-radius: 50%;
+  text-decoration: none;
+  outline-style: none;
+  background: url('../images/numkeys-all.png') -285px 0;
+  background-size: 786px 140px;
+  border-width: 0;
+}
+button.four:active {
+  background: url('../images/numkeys-all.png') -284px -69px;
+  background-size: 786px 140px;
 }
 #five {
     left: 93px;
     width: 80px;
-    background: url('../images/numkeys-all.png') -357px 0;
-    background-size: 786px 140px;
+    /*background: url('../images/numkeys-all.png') -357px 0;
+    background-size: 786px 140px;*/
+}
+button.five {
+  height:70px;
+  width:70px;
+  border-radius: 50%;
+  text-decoration: none;
+  outline-style: none;
+  background: url('../images/numkeys-all.png') -357px 0;
+  background-size: 786px 140px;
+  border-width: 0;
+}
+button.five:active {
+  background: url('../images/numkeys-all.png') -356px -69px;
+  background-size: 786px 140px;
 }
 #six {
     left: 169px;
     width: 80px;
-    background: url('../images/numkeys-all.png') -429px 0;
-    background-size: 786px 140px;
+    /*background: url('../images/numkeys-all.png') -429px 0;
+    background-size: 786px 140px;*/
+}
+button.six {
+  height:70px;
+  width:70px;
+  border-radius: 50%;
+  text-decoration: none;
+  outline-style: none;
+  background: url('../images/numkeys-all.png') -429px 0;
+  background-size: 786px 140px;
+  border-width: 0;
+}
+button.six:active {
+  background: url('../images/numkeys-all.png') -428px -69px;
+  background-size: 786px 140px;
 }
 
 /* ul row-four-keys div */
@@ -280,33 +437,105 @@ body {
 #one {
     left: 15px;
     width: 80px;
-    background: url('../images/numkeys-all.png') -71px 0;
-    background-size: 786px 140px;
+    /*background: url('../images/numkeys-all.png') -71px 0;
+    background-size: 786px 140px;*/
+}
+button.one {
+  height:70px;
+  width:70px;
+  border-radius: 50%;
+  text-decoration: none;
+  outline-style: none;
+  background: url('../images/numkeys-all.png') -71px 0;
+  background-size: 786px 140px;
+  border-width: 0;
+}
+button.one:active {
+  background: url('../images/numkeys-all.png') -70px -69px;
+  background-size: 786px 140px;
 }
 #two {
     left: 93px;
     width: 80px;
-    background: url('../images/numkeys-all.png') -143px 0;
-    background-size: 786px 140px;
+    /*background: url('../images/numkeys-all.png') -143px 0;
+    background-size: 786px 140px;*/
+}
+button.two {
+  height:70px;
+  width:70px;
+  border-radius: 50%;
+  text-decoration: none;
+  outline-style: none;
+  background: url('../images/numkeys-all.png') -143px 0;
+  background-size: 786px 140px;
+  border-width: 0;
+}
+button.two:active {
+  background: url('../images/numkeys-all.png') -142px -69px;
+  background-size: 786px 140px;
 }
 #three {
     left: 169px;
     width: 80px;
-    background: url('../images/numkeys-all.png') -215px 0;
-    background-size: 786px 140px;
+    /*background: url('../images/numkeys-all.png') -215px 0;
+    background-size: 786px 140px;*/
+}
+button.three {
+  height:70px;
+  width:70px;
+  border-radius: 50%;
+  text-decoration: none;
+  outline-style: none;
+  background: url('../images/numkeys-all.png') -215px 0;
+  background-size: 786px 140px;
+  border-width: 0;
+}
+button.three:active {
+  background: url('../images/numkeys-all.png') -214px -69px;
+  background-size: 786px 140px;
 }
 #multiply {
   left: 242px;
   width: 80px;
+  /*background: url('../images/funckeys-all.png') -142px -70px;
+  background-size: 715px 140px;*/
+}
+button.multiply {
+  height:70px;
+  width:70px;
+  border-radius: 50%;
+  text-decoration: none;
+  outline-style: none;
   background: url('../images/funckeys-all.png') -142px -70px;
   background-size: 715px 140px;
+  border-width: 0;
 }
+button.multiply:active {
+  background: url('../images/funckeys-all.png') -142px 0;
+  background-size: 715px 140px;
+}
+
 #divide {
     left: 317px;
     width: 80px;
-    background: url('../images/funckeys-all.png') -214px -70px;
-    background-size: 715px 140px;
+    /*background: url('../images/funckeys-all.png') -214px -70px;
+    background-size: 715px 140px;*/
 }
+button.divide {
+  height:70px;
+  width:70px;
+  border-radius: 50%;
+  text-decoration: none;
+  outline-style: none;
+  background: url('../images/funckeys-all.png') -214px -70px;
+  background-size: 715px 140px;
+  border-width: 0;
+}
+button.divide:active {
+  background: url('../images/funckeys-all.png') -214px 0;
+  background-size: 715px 140px;
+}
+
 
 /* ul row-five-keys div */
 #row-five-keys {
@@ -333,30 +562,102 @@ body {
 #zero {
     left: 15px;
     width: 80px;
-    background: url('../images/numkeys-all.png') 0 0;
-    background-size: 786px 140px;
+    /*background: url('../images/numkeys-all.png') 0 0;
+    background-size: 786px 140px;*/
+}
+button.zero {
+  height:70px;
+  width:70px;
+  border-radius: 50%;
+  text-decoration: none;
+  outline-style: none;
+  background: url('../images/numkeys-all.png') 0 0;
+  background-size: 786px 140px;
+  border-width: 0;
+}
+button.zero:active {
+  background: url('../images/numkeys-all.png') 1px -69px;
+  background-size: 786px 140px;
 }
 #dot {
     left: 93px;
     width: 80px;
-    background: url('../images/numkeys-all.png') -717px 0;
-    background-size: 786px 140px;
+    /*background: url('../images/numkeys-all.png') -717px 0;
+    background-size: 786px 140px;*/
+}
+button.dot {
+  height:70px;
+  width:70px;
+  border-radius: 50%;
+  text-decoration: none;
+  outline-style: none;
+  background: url('../images/numkeys-all.png') -715px 0;
+  background-size: 786px 140px;
+  border-width: 0;
+}
+button.dot:active {
+  background: url('../images/numkeys-all.png') -714px -69px;
+  background-size: 786px 140px;
 }
 #equals {
     left: 169px;
     width: 80px;
-    background: url('../images/funckeys-all.png') -287px -70px;
-    background-size: 715px 140px;
+    /*background: url('../images/funckeys-all.png') -287px -70px;
+    background-size: 715px 140px;*/
 }
+button.equals {
+  height:70px;
+  width:70px;
+  border-radius: 50%;
+  text-decoration: none;
+  outline-style: none;
+  background: url('../images/funckeys-all.png') -287px -70px;
+  background-size: 715px 140px;
+  border-width: 0;
+}
+button.equals:active {
+  background: url('../images/funckeys-all.png') -287px 0;
+  background-size: 715px 140px;
+}
+
 #plus {
   left: 242px;
   width: 80px;
-  background: url('../images/funckeys-all.png') -2px -70px;
-  background-size: 786px 140px;
+  /*background: url('../images/funckeys-all.png') -2px -70px;
+  background-size: 786px 140px;*/
 }
+button.plus {
+  height:70px;
+  width:70px;
+  border-radius: 50%;
+  text-decoration: none;
+  outline-style: none;
+  background: url('../images/funckeys-all.png') 0 -70px;
+  background-size: 715px 140px;
+  border-width: 0;
+}
+button.plus:active {
+  background: url('../images/funckeys-all.png') 0px 0;
+  background-size: 715px 140px;
+}
+
 #minus {
     left: 317px;
     width: 80px;
-    background: url('../images/funckeys-all.png') -71px -70px;
-    background-size: 715px 140px;
+    /*background: url('../images/funckeys-all.png') -71px -70px;
+    background-size: 715px 140px;*/
+}
+button.minus {
+  height:70px;
+  width:70px;
+  border-radius: 50%;
+  text-decoration: none;
+  outline-style: none;
+  background: url('../images/funckeys-all.png') -71px -70px;
+  background-size: 715px 140px;
+  border-width: 0;
+}
+button.minus:active {
+  background: url('../images/funckeys-all.png') -71px 0;
+  background-size: 715px 140px;
 }
