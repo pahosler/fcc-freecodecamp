@@ -22,7 +22,7 @@ body {
     border-radius: 25px;
     background-image: url(../images/background.gif);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 500px 500px;
     box-shadow: 5px 8px 6px #111111;
 }
 #display {
@@ -174,7 +174,7 @@ body {
 
 #row-two-keys {
     position: relative;
-    top: 100px;
+    top: 80px;
     margin: auto;
     left: 3px;
 }
@@ -227,7 +227,7 @@ body {
 
 #row-three-keys {
     position: relative;
-    top: 180px;
+    top: 160px;
     margin: auto;
     left: 3px;
 }
@@ -280,7 +280,7 @@ body {
 
 #row-four-keys {
     position: relative;
-    top:260px;
+    top:240px;
     margin: auto;
     left: 3px;
 }
@@ -317,9 +317,42 @@ body {
     background: url('../images/numkeys-all.png') -215px 0;
     background-size: 786px 140px;
 }
+#row-five-keys {
+    position: relative;
+    top:350px;
+    margin: auto;
+    left: 3px;
+}
+
+/* function keys 1,2,3,= */
+
+#row-five-keys li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    top: 0;
+    height: 70px;
+    width: 70px;
+    display: block;
+    border-color: #000;
+    border-radius: 50%;
+}
+#zero {
+    left: 15px;
+    width: 80px;
+    background: url('../images/numkeys-all.png') 0 0;
+    background-size: 786px 140px;
+}
+#dot {
+    left: 93px;
+    width: 80px;
+    background: url('../images/numkeys-all.png') -717px 0;
+    background-size: 786px 140px;
+}
 #equals {
-  left: 242px;
-  width: 80px;
-  background: url('../images/funckeys-all.png') -287px -70px;
-  background-size: 715px 140px;
+    left: 169px;
+    width: 80px;
+    background: url('../images/funckeys-all.png') -287px -70px;
+    background-size: 715px 140px;
 }

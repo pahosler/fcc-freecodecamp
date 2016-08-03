@@ -1,6 +1,32 @@
 $(document).ready(function() {
+
+    var nixies = (function() {
+
+      return {
+        nixie: nixies
+      }
+    })();
+
+    var numKeys = (function () {
+
+      return {
+        numkey: numKeys
+      }
+    })();
+
+    var funcKeys = (function() {
+
+      return {
+        funcKey: funcKeys
+      }
+    })();
+
     var slot = ['#nixie0', '#nixie1', '#nixie2', '#nixie3', '#nixie4', '#nixie5', '#nixie6', '#nixie7'];
     var nixie = ['0 0', '-40px 0', '-80px 0', '-120px 0', '-160px 0', '-200px 0', '-240px 0', '-280px 0', '-320px 0', '-360px 0', '-400px 0', '-440px 0'];
+    var numKeyOn = [];
+    var numKeyOff = [];
+    var funcKeyOn = [];
+    var funKeyOff = [];
     var calculator = {
         init: function() {
             this.cacheDom();
@@ -69,13 +95,22 @@ $(document).ready(function() {
 
         },
         nixiesOff: function() {
-          var x= 0;
+          var pos= 0;
+          var aNixie = 0;
+          var blankNixie = nixie[11];
+          var dPos = 1; //delta pos to change direction that nixies engage
+          var dNix = 1; // delta nixie to change count direction
             setInterval(function() {
-                for (var i = 0; i < slot.length; ++i) {
-                    $(slot[i]).css("background-position", nixie[x]);
-                }
-                x = x > 10 ? 0:x=x+1;
-            }, 1000);
+              for (var i = 0; i < slot.length; ++i) {
+                  $(slot[i]).css("background-position", blankNixie);
+              }
+              $(slot[pos]).css("background-position", nixie[aNixie] );
+              pos += dPos; aNixie += dNix;
+              if(pos > 6 || pos < 1){dPos = -dPos}
+              if(aNixie > 8 || aNixie <1 ){dNix = -dNix}
+
+
+            }, 300);
         }
     }
     calculator.init();
