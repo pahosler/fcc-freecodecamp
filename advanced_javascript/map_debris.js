@@ -15,6 +15,17 @@
 function orbitalPeriod(arr) {
     var GM = 398600.4418;
     var earthRadius = 6367.4447;
+    spaceJunk = [...arr];
+    for(var i = 0; i<spaceJunk.length;++i){
+      var avgAlt = spaceJunk[i].avgAlt;
+      var op = Math.round(2*Math.PI*(Math.sqrt(Math.pow(earthRadius+spaceJunk[i].avgAlt,3)/GM)));
+      spaceJunk[i].orbitalPeriod=op;
+      delete spaceJunk[i].avgAlt;
+    }
+    for(var i =0;i<spaceJunk.length;++i){
+
+    }
+    console.log(spaceJunk);
     return arr;
 }
 

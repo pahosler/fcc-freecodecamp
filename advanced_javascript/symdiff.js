@@ -12,34 +12,31 @@
 function sym(args) {
     var arr = [...arguments];
     var diff = [];
+    var symdiffs = [];
+
+      function symdiff(a,b){
+        var temp = [];
+        var values = a.concat(b);
+        console.log("this is v",values);
+        for(var i = values.length-1; i >0;--i){
+          var cut = values.splice(i,1);
+          console.log("this is values after splice",values);
+          console.log("this is cut",cut);
+          if(values.indexOf(cut,0) === -1 && temp.indexOf(cut) === -1){
+            temp.push(cut[0]);
+          }
+        }
+        console.log("this is temp",temp);
+        return [...temp];
+      }
 
     arr.reduce(function(a,sym,idx,array){
       // console.log(array);
       if (a !== undefined){
-        diff = [...a];
+        diff = symdiff(a.sort(),sym.sort());
+      }else {
+        diff = symdiff(diff.sort(),sym.sort());
       }
-      console.log("diff",diff);
-      console.log("sym",sym);
-      diff.filter(function(e,i,a){
-        var temp=[];
-        for(var z=0;z<sym.length;++z){
-          if (e === sym[z]){
-            console.log("splice sym[z]",sym[z]);
-
-            diff.splice(i,1);
-            console.log("diff is now",diff);
-            // sym.splice(z,1)
-            // console.log("sym is now",sym);
-            continue;
-          }
-          else {
-            console.log("push sym[z]",sym[z]);
-
-            diff.push(sym[z]);
-            continue;
-          }
-        }
-      });
       console.log("new diff",diff);
     });
 
@@ -47,7 +44,7 @@ function sym(args) {
 }
 //sym([5, 2, 1, 4], [1, 2, 3]);
 console.log("I am...",sym([1, 2, 3], [5, 2, 1, 4])); //should return [3, 4, 5].
-// console.log("I am...", sym([1, 2, 5], [2, 3, 5], [3, 4, 5])); // should return [1, 4, 5].
+console.log("I am...", sym([1, 2, 5], [2, 3, 5], [3, 4, 5])); // should return [1, 4, 5].
 // console.log(sym([1, 2, 5], [2, 3, 5], [3, 4, 5])); // should contain only three elements.
 // console.log(sym([1, 1, 2, 5], [2, 2, 3, 5], [3, 4, 5, 5])); // should return [1, 4, 5].
 // console.log(sym([1, 1, 2, 5], [2, 2, 3, 5], [3, 4, 5, 5])); // should contain only three elements.
