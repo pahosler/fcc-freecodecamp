@@ -17,8 +17,6 @@ li {
 
 #calculator {
     position: relative;;
-    /*left: 300px;
-    top: 150px;*/
     margin: 60px auto;
     width: 410px;
     height: 500px;
@@ -165,8 +163,6 @@ button.clear:active {
 #memplus {
     left: 243px;
     width: 80px;
-    /*background: url('../images/funckeys-all.png') -430px -70px;
-    background-size: 715px 140px;*/
 }
 button.memplus {
   height:70px;
@@ -186,8 +182,6 @@ button.memplus:active {
 #memminus {
     left: 317px;
     width: 80px;
-    /*background: url('../images/funckeys-all.png') -501px -70px;
-    background-size: 715px 140px;*/
 }
 button.memminus {
   height:70px;
@@ -206,8 +200,6 @@ button.memminus:active {
 #memrecall {
     left: 243px;
     width: 80px;
-    /*background: url('../images/funckeys-all.png') -573px -70px;
-    background-size: 715px 140px;*/
 }
 button.memrecall {
   height:70px;
@@ -269,8 +261,6 @@ button.memclear:active {
 #seven {
     left: 15px;
     width: 80px;
-    /*background: url('../images/numkeys-all.png') -501px 0;
-    background-size: 786px 140px;*/
 }
 button.seven {
   height:70px;
@@ -289,8 +279,6 @@ button.seven:active {
 #eight {
     left: 93px;
     width: 80px;
-    /*background: url('../images/numkeys-all.png') -573px 0;
-    background-size: 786px 140px;*/
 }
 button.eight {
   height:70px;
@@ -309,8 +297,6 @@ button.eight:active {
 #nine {
     left: 169px;
     width: 80px;
-    /*background: url('../images/numkeys-all.png') -645px 0;
-    background-size: 786px 140px;*/
 }
 button.nine {
   height:70px;
@@ -353,8 +339,6 @@ button.nine:active {
 #four {
     left: 15px;
     width: 80px;
-    /*background: url('../images/numkeys-all.png') -285px 0;
-    background-size: 786px 140px;*/
 }
 button.four {
   height:70px;
@@ -373,8 +357,6 @@ button.four:active {
 #five {
     left: 93px;
     width: 80px;
-    /*background: url('../images/numkeys-all.png') -357px 0;
-    background-size: 786px 140px;*/
 }
 button.five {
   height:70px;
@@ -393,8 +375,6 @@ button.five:active {
 #six {
     left: 169px;
     width: 80px;
-    /*background: url('../images/numkeys-all.png') -429px 0;
-    background-size: 786px 140px;*/
 }
 button.six {
   height:70px;
@@ -437,8 +417,6 @@ button.six:active {
 #one {
     left: 15px;
     width: 80px;
-    /*background: url('../images/numkeys-all.png') -71px 0;
-    background-size: 786px 140px;*/
 }
 button.one {
   height:70px;
@@ -457,8 +435,6 @@ button.one:active {
 #two {
     left: 93px;
     width: 80px;
-    /*background: url('../images/numkeys-all.png') -143px 0;
-    background-size: 786px 140px;*/
 }
 button.two {
   height:70px;
@@ -477,8 +453,6 @@ button.two:active {
 #three {
     left: 169px;
     width: 80px;
-    /*background: url('../images/numkeys-all.png') -215px 0;
-    background-size: 786px 140px;*/
 }
 button.three {
   height:70px;
@@ -497,8 +471,6 @@ button.three:active {
 #multiply {
   left: 242px;
   width: 80px;
-  /*background: url('../images/funckeys-all.png') -142px -70px;
-  background-size: 715px 140px;*/
 }
 button.multiply {
   height:70px;
@@ -518,8 +490,6 @@ button.multiply:active {
 #divide {
     left: 317px;
     width: 80px;
-    /*background: url('../images/funckeys-all.png') -214px -70px;
-    background-size: 715px 140px;*/
 }
 button.divide {
   height:70px;
@@ -562,8 +532,6 @@ button.divide:active {
 #zero {
     left: 15px;
     width: 80px;
-    /*background: url('../images/numkeys-all.png') 0 0;
-    background-size: 786px 140px;*/
 }
 button.zero {
   height:70px;
@@ -582,8 +550,6 @@ button.zero:active {
 #dot {
     left: 93px;
     width: 80px;
-    /*background: url('../images/numkeys-all.png') -717px 0;
-    background-size: 786px 140px;*/
 }
 button.dot {
   height:70px;
@@ -602,8 +568,6 @@ button.dot:active {
 #equals {
     left: 169px;
     width: 80px;
-    /*background: url('../images/funckeys-all.png') -287px -70px;
-    background-size: 715px 140px;*/
 }
 button.equals {
   height:70px;
@@ -623,8 +587,6 @@ button.equals:active {
 #plus {
   left: 242px;
   width: 80px;
-  /*background: url('../images/funckeys-all.png') -2px -70px;
-  background-size: 786px 140px;*/
 }
 button.plus {
   height:70px;
@@ -644,8 +606,6 @@ button.plus:active {
 #minus {
     left: 317px;
     width: 80px;
-    /*background: url('../images/funckeys-all.png') -71px -70px;
-    background-size: 715px 140px;*/
 }
 button.minus {
   height:70px;

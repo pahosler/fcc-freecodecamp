@@ -9,13 +9,14 @@
 // array should not be sorted in numerical order.
 
 function uniteUnique(arr) {
-  var args = Array.prototype.slice.call(arguments, 1);
-  for (var i = 0; i<args.length; ++i){
-    arr.push(args[i]);
-  }
+  // var args = Array.prototype.slice.call(arguments, 1);
+  // for (var i = 0; i<args.length; ++i){
+  //   arr.push(args[i]);
+  // }
+  arr = [...arguments];
   arr = arr.reduce(function(a, b) {
   return a.concat(b);
-}, []);
+});
   var z=0;
   while(z < arr.length){
     for(var i=z; i< arr.length ; ++i){
