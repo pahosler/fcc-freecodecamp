@@ -20,15 +20,23 @@ function sym(args) {
       }
       console.log("diff",diff);
       console.log("sym",sym);
-      diff=diff.filter(function(e,i,a){
+      diff.filter(function(e,i,a){
         var temp=[];
         for(var z=0;z<sym.length;++z){
-          console.log("sym[z]",sym[z]);
           if (e === sym[z]){
-            return false;
+            console.log("splice sym[z]",sym[z]);
+
+            diff.splice(i,1);
+            console.log("diff is now",diff);
+            // sym.splice(z,1)
+            // console.log("sym is now",sym);
+            continue;
           }
           else {
-            return true
+            console.log("push sym[z]",sym[z]);
+
+            diff.push(sym[z]);
+            continue;
           }
         }
       });
@@ -38,10 +46,10 @@ function sym(args) {
 
 }
 //sym([5, 2, 1, 4], [1, 2, 3]);
-// console.log("I am...",sym([1, 2, 3], [5, 2, 1, 4])); //should return [3, 4, 5].
+console.log("I am...",sym([1, 2, 3], [5, 2, 1, 4])); //should return [3, 4, 5].
 // console.log("I am...", sym([1, 2, 5], [2, 3, 5], [3, 4, 5])); // should return [1, 4, 5].
 // console.log(sym([1, 2, 5], [2, 3, 5], [3, 4, 5])); // should contain only three elements.
-console.log(sym([1, 1, 2, 5], [2, 2, 3, 5], [3, 4, 5, 5])); // should return [1, 4, 5].
+// console.log(sym([1, 1, 2, 5], [2, 2, 3, 5], [3, 4, 5, 5])); // should return [1, 4, 5].
 // console.log(sym([1, 1, 2, 5], [2, 2, 3, 5], [3, 4, 5, 5])); // should contain only three elements.
 // console.log(sym([3, 3, 3, 2, 5], [2, 1, 5, 7], [3, 4, 6, 6], [1, 2, 3])); // should return [2, 3, 4, 6, 7].
 // console.log(sym([3, 3, 3, 2, 5], [2, 1, 5, 7], [3, 4, 6, 6], [1, 2, 3])); // should contain only five elements.
