@@ -90,36 +90,61 @@ $(document).ready(function() {
         var nixie = ['0 0', '-40px 0', '-80px 0', '-120px 0', '-160px 0', '-200px 0', '-240px 0', '-280px 0', '-320px 0', '-360px 0', '-400px 0', '-440px 0'];
         var buffer = []; // stores key presses
         var values = []; // stores values to be evaluated
+        // flags +,-,*,/,m+,m-,mr,mc,clear
+        // flags reset to zero and set flag when key is pressed
+        var opFlags = [0,0,0,0,0];
+        var memRegister =[];
+        var funkeys = {
+          plus:0,minus:1,mult:2,divide:3,clr:4
+        }
 
         // bind events
         $clear.on('click', function() {
-          buffer=[];
-          values = [];
+          if(opFlags[clr] == 0){
+            // reset function
+            buffer=[];
+            opFlags[clr]=1;
             nixiesOff();
-        });
+          }else{
+            // reset all
+            opFlags[clr]=0;
+            buffer=[]
+            values = [];
+            nixiesOff();
+          // flag 8
+        }
+      });
         $memplus.on('click', function() {
             console.log("Hey you clicked me!");
+            // flag 4
         });
         $memminus.on('click', function() {
             console.log("Hey you clicked me!");
+            // flag 5
         });
         $memrecall.on('click', function() {
             console.log("Hey you clicked me!");
+            // flag 6
         });
         $memclear.on('click', function() {
             console.log("Hey you clicked me!");
+            //flag 7
         });
         $plus.on('click', function() {
           pushValues("+");
+          //flag 0
         });
         $minus.on('click', function() {
           pushValues("-");
+          // flag 1
         });
         $divide.on('click', function() {
           pushValues("/");
+          // flag 3
         });
         $multiply.on('click', function() {
           pushValues("*");
+          // flag 2
         });
         $keydot.on('click', function() {
             accumulator(10);
