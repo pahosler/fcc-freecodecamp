@@ -6,7 +6,9 @@
 // in alphabetical order by item.
 
 function updateInventory(arr1, arr2) {
-  var inv = arr1.map()
+  inventory(arr1,arr1.length);
+
+  function inventory(arr,idx)
     // All inventory must be accounted for or you're fired!
     return arr1;
 }
