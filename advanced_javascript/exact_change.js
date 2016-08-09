@@ -12,41 +12,49 @@
 // Otherwise, return change in coin and bills, sorted in highest to lowest order.
 
 function checkCashRegister(price, cash, cid) {
-    var denomination = {};
+    // var denomination = {};
     var change;
-    var totalInDrawer = 0;
+    // var totalInDrawer = 0;
     var change = cash - price;
 
-    function makeChange(change){
-      switch (change){
-        case 20-100: {
-          return change ="20s";
+    function arrToObj(arr) {
+        var newObject = {};
+        for (var inv=0;inv<arr.length;++inv) {
+            newObject[arr[inv][0]] = arr[inv][1];
         }
-        case  10-19:{
-          return change ="10s"
-        }
-        case  1-9:{
-          return change ="1s"
-        }
-        case .01-.99:{
-          return change = "cents";
-        }
+        return newObject;
+    }
+
+    function totalInDrawer(denomination){
+      var cashTotal = 0;
+      var keys = Object.keys(denomination),i,len=keys.length;
+      for(i=0; i<len; ++i){
+        var k=keys[i];
+        cashTotal += (denomination[k]);
       }
+      console.log("cashTotal",cashTotal);
+      // javascript SUCKS at adding simple floating point numbers
+      // as a result you have to use this hack(x*NNN/NNN) to get a proper total!
+      return ((cashTotal*100)/100);
+    }
+
+    function makeChange(change){
+
       return change;
     }
 
-    for( var currency of cid){
-      totalInDrawer += (currency[currency,1]);
-      denomination[currency[currency,0]] = currency[currency,1];
-    }
+    // for( var currency of cid){
+    //   totalInDrawer += (currency[currency,1]);
+    //   denomination[currency[currency,0]] = currency[currency,1];
+    // }
+    var denomination = arrToObj(cid);
+    var total = totalInDrawer(denomination);
+    console.log("TOTAL",total);
 
-    // javascript SUCKS at adding simple floating point numbers
-    // as a result you have to use this hack to get a proper total!
-    totalInDrawer = (totalInDrawer*100)/100;
-    if(change > totalInDrawer){
+    if(change > total){
       change = "Insufficient Funds";
       return change;
-    } else if(change === totalInDrawer){
+    } else if(change === total){
       change = "Closed";
       return change;
     }else{
