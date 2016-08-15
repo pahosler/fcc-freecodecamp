@@ -107,7 +107,7 @@ $(document).ready(function() {
             nixiesOff();
           }else{
             // reset all
-            opFlags[clr]=0;
+            opFlags[funkeys.clr]=0;
             buffer=[]
             values = [];
             nixiesOff();

@@ -19,6 +19,23 @@
 // 3 + 3 = 6 → Return 6
 
 function pairwise(arr, arg) {
+  index = [];
+  arr.reduce((prev,curr,idx,array)=>{
+    array.reduce((a,b,i) => {
+      if(a+b == arg && index.indexOf(i)== -1 && index.indexOf(idx)==-1 && i !== idx){
+        index.push(i,idx);
+      }
+      return curr
+    },curr)
+    return array
+  },[])
+  if (index[0] == undefined){
+    return 0;
+  }else{
+    arg = index.reduce((prev,curr)=> {
+      return prev+curr
+    })
+  }
   return arg;
 }
 
@@ -27,3 +44,4 @@ console.log(pairwise([1, 3, 2, 4], 4)); // should return 1.
 console.log(pairwise([1, 1, 1], 2)); // should return 1.
 console.log(pairwise([0, 0, 0, 0, 1, 1], 1)); // should return 10.
 console.log(pairwise([], 100)); // should return 0.
+console.log(pairwise([7, 9, 11, 13, 15], 20)); //should return 6

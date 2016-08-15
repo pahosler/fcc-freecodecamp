@@ -12,53 +12,84 @@
 // Otherwise, return change in coin and bills, sorted in highest to lowest order.
 
 function checkCashRegister(price, cash, cid) {
-    // var denomination = {};
-    var change;
-    // var totalInDrawer = 0;
     var change = cash - price;
+    var drawer = {
+        total: 0
+    };
+    var currency = [];
+    var denomination = [{
+        name: 'ONE HUNDRED',
+        value: 100.00
+    }, {
+        name: 'TWENTY',
+        value: 20.00
+    }, {
+        name: 'TEN',
+        value: 10.00
+    }, {
+        name: 'FIVE',
+        value: 5.00
+    }, {
+        name: 'ONE',
+        value: 1.00
+    }, {
+        name: 'QUARTER',
+        value: 0.25
+    }, {
+        name: 'DIME',
+        value: 0.10
+    }, {
+        name: 'NICKLE',
+        value: 0.05
+    }, {
+        name: 'PENNY',
+        value: 0.01
+    }];
 
-    function arrToObj(arr) {
-        var newObject = {};
-        for (var inv=0;inv<arr.length;++inv) {
-            newObject[arr[inv][0]] = arr[inv][1];
+    function setDrawer(cid) {
+        cid.reduce((prev, curr) => {
+            drawer[curr[0]] = curr[1];
+            drawer.total += curr[1];
+            // currency.push(curr[1]);
+            return cid;
+        }, []);
+        drawer.total = (drawer.total*100)/100;
+    }
+
+    function makeChange(change) {
+        var toCustomer = denomination.reduce((prev, curr) => {
+            var val = 0;
+            // check drawer for currency amt and denomination
+            while (drawer[curr.name] > 0 && change >= curr.value) {
+                change -= curr.value;
+                drawer[curr.name] -= curr.value;
+                val += curr.value;
+                change = Math.round(change * 100) / 100;
+            }
+            if (val > 0) {
+                prev.push([curr.name, val]);
+            }
+            return prev;
+        }, []);
+
+        if (toCustomer.length <1 || change >0){
+          return "Insufficient Funds";
         }
-        return newObject;
+        return toCustomer;
+
     }
 
-    function totalInDrawer(denomination){
-      var cashTotal = 0;
-      var keys = Object.keys(denomination),i,len=keys.length;
-      for(i=0; i<len; ++i){
-        var k=keys[i];
-        cashTotal += (denomination[k]);
-      }
-      console.log("cashTotal",cashTotal);
-      // javascript SUCKS at adding simple floating point numbers
-      // as a result you have to use this hack(x*NNN/NNN) to get a proper total!
-      return ((cashTotal*100)/100);
-    }
 
-    function makeChange(change){
+    setDrawer(cid);
 
-      return change;
-    }
-
-    // for( var currency of cid){
-    //   totalInDrawer += (currency[currency,1]);
-    //   denomination[currency[currency,0]] = currency[currency,1];
-    // }
-    var denomination = arrToObj(cid);
-    var total = totalInDrawer(denomination);
-    console.log("TOTAL",total);
-
-    if(change > total){
-      change = "Insufficient Funds";
-      return change;
-    } else if(change === total){
-      change = "Closed";
-      return change;
-    }else{
-      return makeChange(change);
+    if (change > drawer.total) {
+        change = "Insufficient Funds";
+        return change;
+    } else if (change === drawer.total) {
+        change = "Closed";
+        return change;
+    } else {
+        return makeChange(change);
     }
     return change;
 }
@@ -74,7 +105,7 @@ function checkCashRegister(price, cash, cid) {
 // ["TWENTY", 60.00],
 // ["ONE HUNDRED", 100.00]]
 
-console.log("transaction 1",checkCashRegister(19.50, 20.00, [
+console.log("transaction 1", checkCashRegister(19.50, 20.00, [
     ["PENNY", 1.01],
     ["NICKEL", 2.05],
     ["DIME", 3.10],
@@ -85,7 +116,7 @@ console.log("transaction 1",checkCashRegister(19.50, 20.00, [
     ["TWENTY", 60.00],
     ["ONE HUNDRED", 100.00]
 ]));
-console.log("transaction 2",checkCashRegister(19.50, 20.00, [
+console.log("transaction 2", checkCashRegister(19.50, 20.00, [
     ["PENNY", 0.01],
     ["NICKEL", 0],
     ["DIME", 0],
@@ -96,7 +127,7 @@ console.log("transaction 2",checkCashRegister(19.50, 20.00, [
     ["TWENTY", 0],
     ["ONE HUNDRED", 0]
 ])); // should return a string.
-console.log("transaction 3",checkCashRegister(19.50, 20.00, [
+console.log("transaction 3", checkCashRegister(19.50, 20.00, [
     ["PENNY", 0.50],
     ["NICKEL", 0],
     ["DIME", 0],
@@ -107,7 +138,7 @@ console.log("transaction 3",checkCashRegister(19.50, 20.00, [
     ["TWENTY", 0],
     ["ONE HUNDRED", 0]
 ])); // should return a string.
-console.log("transaction 4",checkCashRegister(19.50, 20.00, [
+console.log("transaction 4", checkCashRegister(19.50, 20.00, [
     ["PENNY", 1.01],
     ["NICKEL", 2.05],
     ["DIME", 3.10],
@@ -118,7 +149,7 @@ console.log("transaction 4",checkCashRegister(19.50, 20.00, [
     ["TWENTY", 60.00],
     ["ONE HUNDRED", 100.00]
 ])); // should return [["QUARTER", 0.50]].
-console.log("transaction 5",checkCashRegister(3.26, 100.00, [
+console.log("transaction 5", checkCashRegister(3.26, 100.00, [
     ["PENNY", 1.01],
     ["NICKEL", 2.05],
     ["DIME", 3.10],
@@ -138,7 +169,7 @@ console.log("transaction 5",checkCashRegister(3.26, 100.00, [
 //     ["DIME", 0.20],
 //     ["PENNY", 0.04]
 // ].
-console.log("transaction 6",checkCashRegister(19.50, 20.00, [
+console.log("transaction 6", checkCashRegister(19.50, 20.00, [
     ["PENNY", 0.01],
     ["NICKEL", 0],
     ["DIME", 0],
@@ -149,7 +180,7 @@ console.log("transaction 6",checkCashRegister(19.50, 20.00, [
     ["TWENTY", 0],
     ["ONE HUNDRED", 0]
 ])); //  should return "Insufficient Funds".
-console.log("transaction 7",checkCashRegister(19.50, 20.00, [
+console.log("transaction 7", checkCashRegister(19.50, 20.00, [
     ["PENNY", 0.01],
     ["NICKEL", 0],
     ["DIME", 0],
@@ -160,7 +191,7 @@ console.log("transaction 7",checkCashRegister(19.50, 20.00, [
     ["TWENTY", 0],
     ["ONE HUNDRED", 0]
 ])); //  should return "Insufficient Funds".
-console.log("transaction 8",checkCashRegister(19.50, 20.00, [
+console.log("transaction 8", checkCashRegister(19.50, 20.00, [
     ["PENNY", 0.50],
     ["NICKEL", 0],
     ["DIME", 0],

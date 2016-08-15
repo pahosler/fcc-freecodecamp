@@ -21,16 +21,69 @@
 
 function telephoneCheck(str) {
     // Good luck!
-    var re = [/(?:\d{3}|\(\d{3}\)\s|\d{3}\s|\(\d{3}\))([-\/\. ])\d{3}\1\d{4}/g,/\d{10,10}/,
-     '(555)555-5555', '(555) 555-5555', '555 555 5555', '5555555555', '1 555 555 5555'];
-var myArray = re[1].test("0123455678");
-console.log(myArray);
-myArray = re[0].test("555 555 5555");
+    valid = [];
+    invalid = false;
+  str.split('').reduce((prev,curr,idx,arr) => {
+      if (!/[0-9|(|)| |-]/.test(curr) || !/[0-9]/.test(arr[arr.length-1])){
+        // console.log("FAIL!!!",arr[arr.length-1],/[0-9]/.test(arr[arr.length-1]))
+        invalid = true
+        return
+      }
+      if (/[(]/.test(curr) && arr[idx+4] !==')' || /[)]/.test(curr) && arr[idx-4] !=='(' || /[-]/.test(arr[0])){
+        invalid = true;
+        return
+      }
+      if(!/[-|| ||(||)]/.test(curr)){
+        valid.push(curr);
+      return
+    }
+    },[]);
 
-console.log(myArray);
+    if (invalid == true){
+      // console.log(valid)
+      return false
+    } else if (valid.length >= 12 || valid.length <10) {
+      // console.log(valid.length,valid, "length >12 or < 10")
+
+      return false
+
+    }else if (valid.length == 11 && valid[0] !== '1' ){
+      // console.log(valid.length,valid, "length>=11, valid[0]=",valid[0])
+
+      return false
+    }else{
+    // console.log(valid.length,valid,"default to true");
     return true;
+  }
+
 }
 
 
 
-telephoneCheck("555-555-5555");
+console.log(telephoneCheck("555-555-5555")); // should return a boolean.
+console.log(telephoneCheck("1 555-555-5555")); // should return true.
+console.log(telephoneCheck("1 (555) 555-5555")); // should return true.
+console.log(telephoneCheck("5555555555")); // should return true.
+console.log(telephoneCheck("555-555-5555")); // should return true.
+console.log(telephoneCheck("(555)555-5555")); // should return true.
+console.log(telephoneCheck("1(555)555-5555")); // should return true.
+console.log(telephoneCheck("555-5555")); // should return false.
+console.log(telephoneCheck("5555555")); // should return false.
+console.log(telephoneCheck("1 555)555-5555")); // should return false.!!!
+console.log(telephoneCheck("1 555 555 5555")); // should return true.
+console.log(telephoneCheck("1 456 789 4444")); // should return true.
+console.log(telephoneCheck("123**&!!asdf#")); // should return false.
+console.log(telephoneCheck("55555555")); // should return false.
+console.log(telephoneCheck("(6505552368)")); // should return false
+console.log(telephoneCheck("2 (757) 622-7382")); // should return false. !!
+console.log(telephoneCheck("0 (757) 622-7382")); // should return false. !!
+console.log(telephoneCheck("-1 (757) 622-7382")); // should return false !!
+console.log(telephoneCheck("2 757 622-7382")); // should return false. !!
+console.log(telephoneCheck("10 (757) 622-7382")); // should return false. !!
+console.log(telephoneCheck("27576227382")); // should return false.!!
+console.log(telephoneCheck("(275)76227382")); // should return false.!!
+console.log(telephoneCheck("2(757)6227382")); // should return false.!!
+console.log(telephoneCheck("2(757)622-7382")); // should return false.!!
+console.log(telephoneCheck("555)-555-5555")); // should return false.
+console.log(telephoneCheck("(555-555-5555")); // should return false.
+console.log(telephoneCheck("(555)5(55?)-5555")); // should return false.
