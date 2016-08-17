@@ -1,0 +1,19 @@
+/*
+** This CSS code is not done to the web.
+** The automatic HTML and CSS code are only a helper.
+*/
+
+body {
+  background-color: #999;
+  text-align: center;
+}
+
+#roboto {
+  top: 99px;
+  height: 88px;
+  width: 50px;
+  background: url("../images/robot_walk.png");
+  background-position: 0px 0;
+  position: absolute;
+  left: 0px;
+}
