@@ -1,10 +1,50 @@
 (function () {
-  var robot_walk = ['0px','-50px','-100px','-150px','-200px','-250px','-300px'];
-  var el = document.getElementById("hello");
-  console.log(el);
-  var i = 0;
-  setInterval(function(){
-    (i<7) ? ++i : i=0;
-    el.backgroundPosition = robot_walk[i] + ' 0';
-  },100);
+var roboA = ['-4px', '-47px', '-90px', '-148px', '-199px','-148px','-90px','-47px'];
+var roboB = ['3px', '-51px', '-96px', '-145px', '-198px', '-250px', '-303px'];
+var roboC = ['0px', '-50px', '-95px', '-141px', '-190px', '-238px', '-292px','-340px'];
+var roboD = ['10px', '-50px', '-105px', '-165px', '-235px', '-320px','-235px','-165px','-105px','-50px'];
+var roboE = ['-15px', '-65px', '-140px', '-190px', '-237px', '-290px'];
+var roboF = ['20px', '-48px', '-120px', '-200px', '-290px','-200px','-120px','-48px'];
+var roboG = ['-1px', '-55px', '-108px', '-167px', '-233px','-167px','-233px','-167px','-233px','-167px', '-295px','-295px','-108px','-55px'];
+var roboH = ['7px', '-50px', '-109px', '-185px','-185px', '-245px', '-295px'];
+var roboI = ['0px', '-52px', '-98px', '-139px', '-190px', '-239px','-239px', '-290px','-339px','-384px','-52px'];
+var roboJ = ['0px', '-50px', '-99px', '-153px', '-208px', '-265px', '-322px','-390px','-445px','-445px'];
+var roboK = ['0px', '-50px', '-98px', '-155px', '-211px', '-270px', '-330px','-330px'];
+var doc = document;
+var ela= doc.getElementById("roboto0");
+var elb = doc.getElementById("roboto1");
+var elc= doc.getElementById("roboto2");
+var eld= doc.getElementById("roboto3");
+var ele= doc.getElementById("roboto4");
+var elf= doc.getElementById("roboto5");
+var elg= doc.getElementById("roboto6");
+var elh= doc.getElementById("roboto7");
+var eli= doc.getElementById("roboto8");
+var elj= doc.getElementById("roboto9");
+var elk= doc.getElementById("roboto10");
+var a,b,c,d,e,f,g,h,i,j,k = 0;
+setInterval(function() {
+  (a < 7) ? ++a : a=0;
+  (b < 6) ? ++b: b = 0;
+  (c < 7) ? ++c : c = 0;
+  (d < 9) ? ++d : d = 0;
+  (e < 5) ? ++e : e = 0;
+  (f < 7) ? ++f : f = 0;
+  (g < 12) ? ++g : g = 0;
+  (h < 6) ? ++h : h =0;
+  (i < 10) ? ++i : i = 0;
+  (j < 9) ? ++j : j=0;
+  (k < 7) ? ++k : k = 0;
+  ela.style.backgroundPosition = roboA[a] + ' 0px';
+  elb.style.backgroundPosition = roboB[b] + ' -100px';
+  elc.style.backgroundPosition = roboC[c] + ' -204px';
+  eld.style.backgroundPosition = roboD[d] + ' -295px';
+  ele.style.backgroundPosition = roboE[e] + ' -380px';
+  elf.style.backgroundPosition = roboF[f] + ' -470px';
+  elg.style.backgroundPosition = roboG[g] + ' -565px';
+  elh.style.backgroundPosition = roboH[h] + ' -664px';
+  eli.style.backgroundPosition = roboI[i] + ' -763px';
+  elj.style.backgroundPosition = roboJ[j] + ' -855px';
+  elk.style.backgroundPosition = roboK[k] + ' -970px';
+}, 180);
 })()
