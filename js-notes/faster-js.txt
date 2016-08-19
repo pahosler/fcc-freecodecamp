@@ -1,0 +1,8 @@
+In this method:
+for (var i=0; i < items.length; i++) {
+JS has to determine the length of items each and every loop.
+
+Instead, you can declare an additional variable, len, and then JS needs only to do a simple comparison of the two variables each and every loop:
+for (var i=0, len=items.length; ++i < len;) {
+
+Also note the use of ++i in the comparison versus i++ as the third parameter of the for loop. This is documented as a faster incrementing method by Paul Irish: http://paulirish.com/i/d9f0.png

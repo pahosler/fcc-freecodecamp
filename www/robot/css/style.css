@@ -8,7 +8,7 @@ body {
   left: 50px;
   height: 88px;
   width: 50px;
-  background: url(https://raw.githubusercontent.com/pahosler/freecodecamp/master/www/robot/images/robosheet.png);
+  background: url(../images/robosheet.png);
   background-position: 0px 0px;
 }
 
@@ -18,7 +18,7 @@ body {
   left: 50px;
   height: 88px;
   width: 52px;
-  background: url(https://raw.githubusercontent.com/pahosler/freecodecamp/master/www/robot/images/robosheet.png);
+  background: url(../images/robosheet.png);
   background-position: 0px -80px;
   position: absolute;
 }
@@ -28,7 +28,7 @@ body {
   left: 50px;
   height: 88px;
   width: 50px;
-  background: url(https://raw.githubusercontent.com/pahosler/freecodecamp/master/www/robot/images/robosheet.png);
+  background: url(../images/robosheet.png);
   background-position: 0px -170px;
 }
 #robotoD {
@@ -37,7 +37,7 @@ body {
   left: 50px;
   height: 88px;
   width: 60px;
-  background: url(https://raw.githubusercontent.com/pahosler/freecodecamp/master/www/robot/images/robosheet.png);
+  background: url(../images/robosheet.png);
   background-position: 0px -295px;
 }
 #robotoE {
@@ -46,7 +46,7 @@ body {
   left: 50px;
   height: 88px;
   width: 50px;
-  background: url(https://raw.githubusercontent.com/pahosler/freecodecamp/master/www/robot/images/robosheet.png);
+  background: url(../images/robosheet.png);
   background-position: -15px -380px;
 }
 #robotoF {
@@ -55,7 +55,7 @@ body {
   left: 50px;
   height: 88px;
   width: 80px;
-  background: url(https://raw.githubusercontent.com/pahosler/freecodecamp/master/www/robot/images/robosheet.png);
+  background: url(../images/robosheet.png);
   background-position: -10px -470px;
 }
 #robotoG {
@@ -64,7 +64,7 @@ body {
   left: 50px;
   height: 88px;
   width: 61px;
-  background: url(https://raw.githubusercontent.com/pahosler/freecodecamp/master/www/robot/images/robosheet.png);
+  background: url(../images/robosheet.png);
   background-position: -6px -565px;
 }
 #robotoH {
@@ -73,7 +73,7 @@ body {
   left: 50px;
   height: 88px;
   width: 60px;
-  background: url(https://raw.githubusercontent.com/pahosler/freecodecamp/master/www/robot/images/robosheet.png);
+  background: url(../images/robosheet.png);
   background-position: 7px -664px;
 }
 #robotoI {
@@ -82,7 +82,7 @@ body {
   left: 50px;
   height: 88px;
   width: 50px;
-  background: url(https://raw.githubusercontent.com/pahosler/freecodecamp/master/www/robot/images/robosheet.png);
+  background: url(../images/robosheet.png);
   background-position: 0px -763px;
 }
 #robotoJ {
@@ -91,7 +91,7 @@ body {
   left: 50px;
   height: 110px;
   width: 50px;
-  background: url(https://raw.githubusercontent.com/pahosler/freecodecamp/master/www/robot/images/robosheet.png);
+  background: url(../images/robosheet.png);
   background-position: 0px -877px;
 }
 #robotoK {
@@ -100,6 +100,6 @@ body {
   left: 50px;
   height: 140px;
   width: 50px;
-  background: url(https://raw.githubusercontent.com/pahosler/freecodecamp/master/www/robot/images/robosheet.png);
+  background: url(../images/robosheet.png);
   background-position: 0px -1000px;
 }
