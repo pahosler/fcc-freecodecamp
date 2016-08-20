@@ -4,26 +4,34 @@
 // Remember, you can access object properties through either dot notation
 // or [] notation.
 
-function truthCheck(collection, pre) {
+//function truthCheck(collection, pre) {
     // Is everyone being true?
-    var custard = undefined;
-    for (var tubby in collection){
-      var thing = collection[tubby][pre];
-      // console.log(thing);
-      if(collection[tubby].hasOwnProperty(pre)){
-        // console.log("yes it has it...");
-        if(thing !== undefined && thing !==0 && thing !== null && thing !== '' && !Number.isNaN(thing)){
-          custard = true;
-        }else {
-          return false;
-        }
-      }else {
-        // console.log("nope!");
-        custard = false;
-        return custard;
-      }
-    }
-    return custard;
+
+
+    // var custard = undefined;
+    // for (var tubby in collection){
+    //   var thing = collection[tubby][pre];
+    //   // console.log(thing);
+    //   if(collection[tubby].hasOwnProperty(pre)){
+    //     // console.log("yes it has it...");
+    //     if(thing !== undefined && thing !==0 && thing !== null && thing !== '' && !Number.isNaN(thing)){
+    //       custard = true;
+    //     }else {
+    //       return false;
+    //     }
+    //   }else {
+    //     // console.log("nope!");
+    //     custard = false;
+    //     return custard;
+    //   }
+    // }
+    // return custard;
+//}
+function truthCheck(collection, pre) {
+    return collection.reduce(function(acc, next) {
+      console.log(acc,next,next[pre]);
+        return (next[pre]) ? acc : false
+    }, true);
 }
 console.log(truthCheck([{
     "user": "Tinky-Winky",
