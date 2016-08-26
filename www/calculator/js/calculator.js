@@ -1,20 +1,20 @@
-$(document).ready(function() {
+$( document ).ready( function() {
 
-    var calculator = (function() {
+    var calculator = ( function() {
 
         // cacheDom
-        var $el = $('#calculator');
+        var $el = $( '#calculator' );
 
         // function keys
-        var $clear = $el.find(".clear");
-        var $memplus = $el.find(".memplus");
-        var $memminus = $el.find(".memminus");
-        var $memrecall = $el.find(".memrecall");
-        var $memclear = $el.find(".memclear");
-        var $plus = $el.find(".plus");
-        var $minus = $el.find(".minus");
-        var $divide = $el.find(".divide");
-        var $multiply = $el.find(".multiply");
+        var $clear = $el.find( ".clear" );
+        var $memplus = $el.find( ".memplus" );
+        var $memminus = $el.find( ".memminus" );
+        var $memrecall = $el.find( ".memrecall" );
+        var $memclear = $el.find( ".memclear" );
+        var $plus = $el.find( ".plus" );
+        var $minus = $el.find( ".minus" );
+        var $divide = $el.find( ".divide" );
+        var $multiply = $el.find( ".multiply" );
         var funcKey = {
             offPlus: '-2px -70px',
             offMinus: '-71px -70px',
@@ -39,17 +39,17 @@ $(document).ready(function() {
         };
 
         // number keys
-        var $keydot = $el.find(".dot");
-        var $key0 = $el.find(".zero");
-        var $key1 = $el.find(".one");
-        var $key2 = $el.find(".two");
-        var $key3 = $el.find(".three");
-        var $key4 = $el.find(".four");
-        var $key5 = $el.find(".five");
-        var $key6 = $el.find(".six");
-        var $key7 = $el.find(".seven");
-        var $key8 = $el.find(".eight");
-        var $key9 = $el.find(".nine");
+        var $keydot = $el.find( ".dot" );
+        var $key0 = $el.find( ".zero" );
+        var $key1 = $el.find( ".one" );
+        var $key2 = $el.find( ".two" );
+        var $key3 = $el.find( ".three" );
+        var $key4 = $el.find( ".four" );
+        var $key5 = $el.find( ".five" );
+        var $key6 = $el.find( ".six" );
+        var $key7 = $el.find( ".seven" );
+        var $key8 = $el.find( ".eight" );
+        var $key9 = $el.find( ".nine" );
         var numKey = {
             offZero: '0 0',
             offOne: '-71px 0',
@@ -86,164 +86,179 @@ $(document).ready(function() {
         // var $nixie7 = $el.find("#nixie7");
 
         // nixie slots and image position
-        var slot = ['#nixie0', '#nixie1', '#nixie2', '#nixie3', '#nixie4', '#nixie5', '#nixie6', '#nixie7'];
-        var nixie = ['0 0', '-40px 0', '-80px 0', '-120px 0', '-160px 0', '-200px 0', '-240px 0', '-280px 0', '-320px 0', '-360px 0', '-400px 0', '-440px 0'];
+        // 544x88 add nixiedash and nixieerror
+        var slot = [ '#nixie0', '#nixie1', '#nixie2', '#nixie3', '#nixie4', '#nixie5', '#nixie6', '#nixie7' ];
+        var nixie = [ '0 0', '-40px 0', '-80px 0', '-120px 0', '-160px 0', '-200px 0', '-240px 0', '-280px 0', '-320px 0', '-360px 0', '-400px 0', '-440px 0', '-478px 0', '-516px 0' ];
         var buffer = []; // stores key presses
         var values = []; // stores values to be evaluated
         // flags +,-,*,/,m+,m-,mr,mc,clear
         // flags reset to zero and set flag when key is pressed
-        var opFlags = [0,0,0,0,0];
-        var memRegister =[];
+        var opFlags = [ 0, 0, 0, 0, 0 ];
+        var memRegister = [];
         var funkeys = {
-          plus:0,minus:1,mult:2,divide:3,clr:4
+            plus: 0,
+            minus: 1,
+            mult: 2,
+            divide: 3,
+            clr: 4
         }
 
         // bind events
-        $clear.on('click', function() {
-          if(opFlags[clr] == 0){
-            // reset function
-            buffer=[];
-            opFlags[clr]=1;
-            nixiesOff();
-          }else{
-            // reset all
-            opFlags[funkeys.clr]=0;
-            buffer=[]
-            values = [];
-            nixiesOff();
-          // flag 8
-        }
-      });
-        $memplus.on('click', function() {
-            console.log("Hey you clicked me!");
+        $clear.on( 'click', function() {
+            if ( opFlags[ funkeys.clr ] == 0 ) {
+                // reset function
+                buffer = [];
+                opFlags[ funkeys.clr ] = 1;
+                nixiesOff();
+            } else {
+                // reset all
+                opFlags[ funkeys.clr ] = 0;
+                buffer = []
+                values = [];
+                nixiesOff();
+                // flag 8
+            }
+        } );
+        $memplus.on( 'click', function() {
+            console.log( "Hey you clicked me!" );
             // flag 4
-        });
-        $memminus.on('click', function() {
-            console.log("Hey you clicked me!");
+        } );
+        $memminus.on( 'click', function() {
+            console.log( "Hey you clicked me!" );
             // flag 5
-        });
-        $memrecall.on('click', function() {
-            console.log("Hey you clicked me!");
+        } );
+        $memrecall.on( 'click', function() {
+            console.log( "Hey you clicked me!" );
             // flag 6
-        });
-        $memclear.on('click', function() {
-            console.log("Hey you clicked me!");
+        } );
+        $memclear.on( 'click', function() {
+            console.log( "Hey you clicked me!" );
             //flag 7
-        });
-        $plus.on('click', function() {
-          pushValues("+");
-          //flag 0
-        });
-        $minus.on('click', function() {
-          pushValues("-");
-          // flag 1
-        });
-        $divide.on('click', function() {
-          pushValues("/");
-          // flag 3
-        });
-        $multiply.on('click', function() {
-          pushValues("*");
-          // flag 2
-        });
-        $keydot.on('click', function() {
-            accumulator(10);
-        });
-        $key0.on('click', function() {
-            accumulator(0);
-        });
-        $key1.on('click', function() {
-            accumulator(1);
-        });
-        $key2.on('click', function() {
-            accumulator(2);
-        });
-        $key3.on('click', function() {
-            accumulator(3);
-        });
-        $key4.on('click', function() {
-            accumulator(4);
-        });
-        $key5.on('click', function() {
-            accumulator(5);
-        });
-        $key6.on('click', function() {
-            accumulator(6);
-        });
-        $key7.on('click', function() {
-            accumulator(7);
-        });
-        $key8.on('click', function() {
-            accumulator(8);
-        });
-        $key9.on('click', function() {
-            accumulator(9);
-        });
+        } );
+        $plus.on( 'click', function() {
+            pushValues( "+" );
+            //flag 0
+        } );
+        $minus.on( 'click', function() {
+            pushValues( "-" );
+            accumulator( 12 );
+            // flag 1
+        } );
+        $divide.on( 'click', function() {
+            pushValues( "/" );
+            // flag 3
+        } );
+        $multiply.on( 'click', function() {
+            pushValues( "*" );
+            // flag 2
+        } );
+        $keydot.on( 'click', function() {
+            accumulator( 10 );
+        } );
+        $key0.on( 'click', function() {
+            accumulator( 0 );
+        } );
+        $key1.on( 'click', function() {
+            accumulator( 1 );
+        } );
+        $key2.on( 'click', function() {
+            accumulator( 2 );
+        } );
+        $key3.on( 'click', function() {
+            accumulator( 3 );
+        } );
+        $key4.on( 'click', function() {
+            accumulator( 4 );
+        } );
+        $key5.on( 'click', function() {
+            accumulator( 5 );
+        } );
+        $key6.on( 'click', function() {
+            accumulator( 6 );
+        } );
+        $key7.on( 'click', function() {
+            accumulator( 7 );
+        } );
+        $key8.on( 'click', function() {
+            accumulator( 8 );
+        } );
+        $key9.on( 'click', function() {
+            accumulator( 9 );
+        } );
 
         _render();
 
         function _render() {
             // Do Something here!
-            console.log(values);
-            for( var i=0; i<buffer.length; ++i){
-              $(slot[i]).css("background-position",nixie[buffer[i]]);
+            console.log( values );
+            for ( var i = 0; i < buffer.length; ++i ) {
+                $( slot[ i ] ).css( "background-position", nixie[ buffer[ i ] ] );
             }
         }
 
         function nixiesOnOff() {
             var pos = 0;
-            var aNixie = 0;
-            var blankNixie = nixie[11];
+            var aNixie = 13;
+            var blankNixie = nixie[ 11 ];
             var dPos = 1; //delta pos to change direction that nixies engage
             var dNix = 1; // delta nixie to change count direction
-            setInterval(function() {
-                for (var i = 0; i < slot.length; ++i) {
-                    $(slot[i]).css("background-position", blankNixie);
+            function calcError() {
+                for ( var i = 0; i < slot.length; ++i ) {
+                    $( slot[ i ] ).css( "background-position", blankNixie );
                 }
-                $(slot[pos]).css("background-position", nixie[aNixie]);
+                $( slot[ pos ] ).css( "background-position", nixie[ aNixie ] );
                 pos += dPos;
-                aNixie += dNix;
-                if (pos > 6 || pos < 1) {
+                // aNixie += dNix;
+                if ( pos > 6 || pos < 1 ) {
                     dPos = -dPos
                 }
-                if (aNixie > 8 || aNixie < 1) {
+                if ( aNixie > 12 || aNixie < 1 ) {
                     dNix = -dNix
                 }
+            }
 
+            function clearError() {
+                clearInterval( runError );
+            }
+            var runError = setInterval( function() {
+                calcError()
+            }, 300 );
 
-            }, 300);
         }
 
         function nixiesOff() {
-            for (var i = 0; i < slot.length; ++i) {
-                $(slot[i]).css("background-position", nixie[11]);
+            for ( var i = 0; i < slot.length; ++i ) {
+                $( slot[ i ] ).css( "background-position", nixie[ 11 ] );
             }
         }
 
-        function accumulator(key) {
-            buffer.unshift(key);
+        function accumulator( key ) {
+            buffer.unshift( key );
             _render();
         }
         return {
-            nixies: nixiesOnOff,
+            nixiesOnOff: nixiesOnOff,
             nixiesOff: nixiesOff
         }
-        function pushValues(key) {
-          buffer.find(function(e,i){
-            console.log('find 10...');
-            if(e===10) {
-              console.log('found',e);
-            buffer.splice(i,1,'.')
-            }
-          });
-          values.push(buffer.reverse().join(''));
-          values.push(key)
-          buffer = [];
+
+        function pushValues( key ) {
+            buffer.find( function( e, i ) {
+                //console.log( 'find 10...' );
+                if ( e === 10 ) {
+                    console.log( 'found', e );
+                    buffer.splice( i, 1, '.' )
+                } else if ( e === 12 ) {
+                    buffer.splice( i, 1, '-' )
+                }
+            } );
+            values.push( buffer.reverse().join( '' ) );
+            values.push( key )
+            buffer = [];
             nixiesOff();
         }
-        // nixiesOnOff();
+        // nixiesOnOff.runError();
 
-    })();
-
+    } )();
     calculator.nixiesOff();
-});
+    calculator.nixiesOnOff.runError;
+} );

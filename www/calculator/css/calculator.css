@@ -104,9 +104,20 @@ li {
     background-position: -326px 0; // -195 0;
 }
 #nixie0 {
-    left: 233px; width: 33px;
+    left: 233px;
+    width: 33px;
     background-image: url('../images/nixies.png');
     background-position: 0 0; // -228 0;
+}
+#nixiedash {
+  width: 33px;
+  background-image: url('../images/nixies.png');
+  background-position: -480px 0;
+}
+#nixieerror {
+  width: 33px;
+  background-image: url('../images/nixies.png');
+  background-position: -520px 0;
 }
 #nixieoff {
     left: 342    width: 33px;

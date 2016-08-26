@@ -39,27 +39,29 @@ body {
 #location {
   position: absolute;
   margin: auto;
-  font-size: 2.5em;
+  font-size: 2.4em;
   font-weight: 700;
-  top: 5px;
+  top: 0px;
   left:20px;
 }
 #date {
   position: absolute;
     font-size: 1.5em;
     font-weight: lighter;
-    top: 35px;
+    top: 33px;
     left:20px;
 }
 #metric {
   position: absolute;
-  top:45px;
+  top:33px;
   right: 20px;
+  cursor: pointer;
 }
 #imperial {
   position: absolute;
-  top: 45px;
+  top: 33px;
   right:12px;
+  cursor: pointer;
 
 }
 .forecast-container {
@@ -70,8 +72,9 @@ body {
     background-size: cover;
 }
 .next-day-container {
-    position: relative;
-    height: 252px;
+    position: absolute;
+    top: 302px;
+    height: 282px;
     width: 320px;
     background-image: url(../images/nextdays-container.png);
     background-size: cover;
@@ -88,30 +91,32 @@ body {
 #forecast {
     height: 584px;
     width: 320px;
-    position: relative;
+    position: absolute;
     top: 0px;
     left: 0px;
 }
 #nextday {
     height: 584px;
     width: 320px;
-    position: relative;
-    top: 0px;
+    position: absolute;;
+    top: -10px;
     left: 0px;
 }
 #localtemp {
-    margin-top: 20px;
-    margin-left: 10px;
+  position: absolute;
+    /*margin-top: 20px;*/
+    /*margin-left: 10px;*/
     left: 10px;
-    top: 35px;
+    top: 10px;
     font-size: 4em;
     font-weight: 700;
 }
 #cond {
     position: absolute;
-    top: 55px;
-    margin-top: -1px;
-    margin-left: 10px;
+    top: 60px;
+    left: 10px;
+    /*margin-top: -1px;*/
+    /*margin-left: 10px;*/
 }
 #weather {
     position: absolute;
@@ -119,6 +124,9 @@ body {
     bottom: 0px;
 }
 ul {
+  position: absolute;
+  top: -30px;
+  left: 0px;
     padding: 5px;
     margin: auto;
     white-space: nowrap;
@@ -130,24 +138,35 @@ li {
 }
 #day1, #day2, #day3 {
     border: solid 1px #000;
-    height: 125px;
-    width: 125px;
+    height: 230px;
+    width: 150px;
 }
 #future {
     position: absolute;
-    top: 10px;
-    left: 20px;
+    top: 70px;
+    left: 0px;
     font-size: 1.5em;
     font-weight: bolder;
     color: #555;
+
 }
 #futuredays {
     position: absolute;
-    left: 20px;
-    top: 5px;
+    left: 0px;
+    top: 35px;
 }
 #weather img {
     height: 20px;
     width: 20px;
+}
+#tomorrow {
+  position: absolute;
+  top: -20px;
+  left: 35px;
+}
+#dayafter {
+  position: absolute;
+  top: -20px;
+  left: 210px;
 }
 #hilo, #hum, #wind {}
