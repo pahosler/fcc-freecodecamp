@@ -141,7 +141,10 @@ $( document ).ready( function() {
         } );
         $minus.on( 'click', function() {
             pushValues( "-" );
-            accumulator( 12 );
+            console.log( buffer.length );
+            if ( buffer.length == 0 ) {
+                accumulator( 12 );
+            }
             // flag 1
         } );
         $divide.on( 'click', function() {
@@ -245,7 +248,7 @@ $( document ).ready( function() {
             buffer.find( function( e, i ) {
                 //console.log( 'find 10...' );
                 if ( e === 10 ) {
-                    console.log( 'found', e );
+                    // console.log( 'found', e );
                     buffer.splice( i, 1, '.' )
                 } else if ( e === 12 ) {
                     buffer.splice( i, 1, '-' )
