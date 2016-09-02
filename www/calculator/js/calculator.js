@@ -15,6 +15,7 @@ $( document ).ready( function() {
         var $minus = $el.find( ".minus" );
         var $divide = $el.find( ".divide" );
         var $multiply = $el.find( ".multiply" );
+        var $equals = $el.find( ".equals" );
         var funcKey = {
             offPlus: '-2px -70px',
             offMinus: '-71px -70px',
@@ -93,26 +94,41 @@ $( document ).ready( function() {
         var values = []; // stores values to be evaluated
         // flags +,-,*,/,m+,m-,mr,mc,clear
         // flags reset to zero and set flag when key is pressed
-        var opFlags = [ 0, 0, 0, 0, 0 ];
+        var opFlags = [ 0, 0, 0, 0, 0, 0, 0 ];
         var memRegister = [];
         var funkeys = {
             plus: 0,
             minus: 1,
             mult: 2,
             divide: 3,
-            clr: 4
+            equals: 4,
+            dot: 5,
+            clr: 6
         }
 
         // bind events
         $clear.on( 'click', function() {
             if ( opFlags[ funkeys.clr ] == 0 ) {
                 // reset function
+                console.log( values.length, values );
+                for ( var i = 0; i < 3; ++i ) {
+                    if ( opFlags[ i ] == 1 ) {
+                        opFlags[ i ] = 0;
+                        // values.splice( -1, 0 );
+                        values = values.slice( 0, -1 );
+                        console.log( 'values', values );;
+                    }
+                }
                 buffer = [];
                 opFlags[ funkeys.clr ] = 1;
                 nixiesOff();
             } else {
                 // reset all
-                opFlags[ funkeys.clr ] = 0;
+                for ( var i = 0; i < opFlags.length; ++i ) {
+                    opFlags[ i ] = 0;
+                }
+                console.log( opFlags );
+                // opFlags[ funkeys.clr ] = 0;
                 buffer = []
                 values = [];
                 nixiesOff();
@@ -136,30 +152,51 @@ $( document ).ready( function() {
             //flag 7
         } );
         $plus.on( 'click', function() {
-            pushValues( "+" );
+            opFlags[ funkeys.dot ] = 0;
+            opFlags[ funkeys.clr ] = 0;
+            if ( opFlags[ funkeys.plus ] == 0 ) {
+                opFlags[ funkeys.plus ] = 1;
+                pushValues( "+" );
+            }
             //flag 0
         } );
         $minus.on( 'click', function() {
+            opFlags[ funkeys.dot ] = 0;
+            opFlags[ funkeys.clr ] = 0;
             pushValues( "-" );
-            console.log( buffer.length );
-            if ( buffer.length == 0 ) {
+            if ( values.length == 2 ) {
                 accumulator( 12 );
             }
             // flag 1
         } );
         $divide.on( 'click', function() {
+            opFlags[ funkeys.dot ] = 0;
+            opFlags[ funkeys.clr ] = 0;
             pushValues( "/" );
             // flag 3
         } );
         $multiply.on( 'click', function() {
+            opFlags[ funkeys.dot ] = 0;
+            opFlags[ funkeys.clr ] = 0;
             pushValues( "*" );
             // flag 2
         } );
+        $equals.on( 'click', function() {
+            opFlags[ funkeys.clr ] = 1;
+            opFlags[ funkeys.dot ] = 0;
+            buffer.unshift( 13 );
+            pushValues( "=" );
+        } );
         $keydot.on( 'click', function() {
-            accumulator( 10 );
+            if ( opFlags[ funkeys.dot ] == 0 ) {
+                opFlags[ funkeys.dot ] = 1;
+                accumulator( 10 );
+            }
         } );
         $key0.on( 'click', function() {
-            accumulator( 0 );
+            if ( buffer.length > 1 || buffer[ 0 ] != 0 ) {
+                accumulator( 0 );
+            }
         } );
         $key1.on( 'click', function() {
             accumulator( 1 );
@@ -193,7 +230,7 @@ $( document ).ready( function() {
 
         function _render() {
             // Do Something here!
-            console.log( values );
+            // console.log( values );
             for ( var i = 0; i < buffer.length; ++i ) {
                 $( slot[ i ] ).css( "background-position", nixie[ buffer[ i ] ] );
             }
@@ -245,23 +282,58 @@ $( document ).ready( function() {
         }
 
         function pushValues( key ) {
+            var equals = false;
             buffer.find( function( e, i ) {
                 //console.log( 'find 10...' );
                 if ( e === 10 ) {
                     // console.log( 'found', e );
                     buffer.splice( i, 1, '.' )
                 } else if ( e === 12 ) {
-                    buffer.splice( i, 1, '-' )
+                    buffer.splice( i, 1 )
+                } else if ( e === 13 ) {
+                    console.log( "EQUALS!!!" );
+                    buffer.splice( i, 1 )
+                    equals = true;
                 }
             } );
             values.push( buffer.reverse().join( '' ) );
-            values.push( key )
+            if ( !equals ) {
+                values.push( key )
+            }
+            console.log( values );
             buffer = [];
             nixiesOff();
+            if ( equals ) {
+                doMath();
+            }
+        }
+
+        function doMath() {
+            var str = values.join( '' );
+            str = Math.round( eval( str ) * 1000000 ) / 1000000;
+            if ( str > 99999999 || str.isNaN ) {
+                str = 'e';
+            } else {
+                str = str.toString();
+            }
+            console.log( "hello", str );
+            buffer = [];
+            buffer = str.split( '' ).reverse();
+            buffer.find( function( e, i ) {
+                if ( e === '-' ) {
+                    buffer.splice( i, 1, 12 );
+                } else if ( e === '.' ) {
+                    // console.log( "found dot!" );
+                    buffer.splice( i, 1, 10 );
+                } else if ( e === 'e' ) {
+                    buffer.splice( i, 1, 13 );
+                }
+            } )
+            _render();
         }
         // nixiesOnOff.runError();
 
     } )();
     calculator.nixiesOff();
     calculator.nixiesOnOff.runError;
-} );
+} );;
