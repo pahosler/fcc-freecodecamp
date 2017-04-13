@@ -29,46 +29,39 @@
 // --> Output would be ">fdd"
 
 function encrypt(text, key) {
-  var encrypted = flase;
-  var bcase;
-  return simple(encrypted,text,key);
+  var encrypted = false;
+  return simple4(encrypted,text,key);
 }
 
 function decrypt(text, key) {
   var encrypted = true;
-  return simple(encrypted,text,key);
+  return simple4(encrypted,text,key);
 }
 
-function simple(text,key) {
+function simple4(encrypted,text,key) {
   var crypt = new cipher();
   var encryptKey = crypt.keys(key);
   var out = [];
   text.split('').reduce((acc,curr) => {
-    curr = crypt.getLetter(curr);
+    curr = crypt.coded(encrypted,curr,encryptKey);
     out.push(curr);
-//    return;
+    //return curr;
   },[]);
+  return out.join('');
 
-  var region = 1;// getLetterRow();
-  /*
-      you could reverse the cipher this way
-
-      var revRow = crypt.row.lowerEnc[letterRow].split('').reverse().join('');
-
-      although I think using an array will be faster<?>
-  */
-
-  var letterNum = crypt.row.lowerEnc[region].indexOf(letter);
-  var cryptLetterNum = (letterNum+encryptKey[0])%crypt.row.lowerEnc[region].length;
-  var cryptLetter = crypt.row.lowerEnc[region].substring(cryptLetterNum,cryptLetterNum+1);
-  console.log(letter,letterNum,cryptLetter,cryptLetterNum);
-  console.log('<','<'.charCodeAt(0));
-  console.log('>','>'.charCodeAt(0));
-  console.log(',',','.charCodeAt(0));
-  console.log('.','.'.charCodeAt(0));
-  console.log('a','A'.charCodeAt(0));
-  console.log('z','Z'.charCodeAt(0));
-
+  // var region = 1;// getLetterRow();
+  // /*
+  //     you could reverse the cipher this way
+  //
+  //     var revRow = crypt.row.lowerEnc[letterRow].split('').reverse().join('');
+  //
+  //     although I think using an array will be faster<?>
+  // */
+  //
+  // var letterNum = crypt.row.lowerEnc[region].indexOf(letter);
+  // var cryptLetterNum = (letterNum+encryptKey[0])%crypt.row.lowerEnc[region].length;
+  // var cryptLetter = crypt.row.lowerEnc[region].substring(cryptLetterNum,cryptLetterNum+1);
+  // console.log(letter,letterNum,cryptLetter,cryptLetterNum);
 }
 
 
@@ -80,15 +73,13 @@ var cipher = function () {
       lowerDec: ["poiuytrewq","lkjhgfdsa",".,mnbvcxz"],
       upperDec: ["POIUYTREWQ","LKJHGFDSA","><MNBVCXZ"]
     };
-    function getLetterRow(bcase, letter){
-
-      return ;
-
-    }
     function isUpper(letter){
+      var state = false;
       this.letter = letter.charCodeAt(0);
-      (this.letter >)
-      return ;
+      (this.letter >64 && this.letter < 91 || this.letter == 60 || this.letter == 62) ?
+        state = true : state = false;
+      //  console.log('state',state,'letter',letter,'code',this.letter);
+      return state;
 
     }
     function keys(key){
@@ -100,16 +91,64 @@ var cipher = function () {
       }
       return keyArr;
     }
-    function getLetter(letter) {
+    function coded(encrypted,letter,encryptKey) {
+      var upper = isUpper(letter);
+      var keys = [];
+      var keyRow ;
+      var arrIndex;
+      //console.log(upper);
+      if (upper && encrypted) {
+        keys = row.upperDec;
+      } else if (upper && !encrypted) {
+        keys = row.upperEnc;
+      } else if (!upper && encrypted){
+        keys = row.lowerDec;
+      } else {
+        keys = row.lowerEnc;
+      }
+      // console.log(keys);
+      keys.reduce((acc,curr,idx) => {
+        if (curr.indexOf(letter) != -1 ){
+          arrIndex = idx;
+          keyRow = curr;
+        }
+        return curr;
+      },[]);
+      //console.log("keyRow",keyRow,arrIndex);
+      if (keyRow === undefined) {
+        return letter;
+      } else {
+
+        //letter =  keyRow.substring((keyRow.indexOf(letter)+encryptKey[arrIndex]%keyRow.length),((keyRow.indexOf(letter)+encryptKey[arrIndex]%keyRow.length)+1));
+        var letterNum = keyRow.indexOf(letter);
+        console.log('encKeyidx',encryptKey,encryptKey[arrIndex]);
+        var cryptLetterNum = (letterNum+encryptKey[arrIndex])%keyRow.length;
+        letter = keyRow.substring(cryptLetterNum,cryptLetterNum+1);
+        return letter;
+        // var letterNum = crypt.row.lowerEnc[region].indexOf(letter);
+        // var cryptLetterNum = (letterNum+encryptKey[0])%crypt.row.lowerEnc[region].length;
+        // var cryptLetter = crypt.row.lowerEnc[region].substring(cryptLetterNum,cryptLetterNum+1);
+        // console.log(letter,letterNum,cryptLetter,cryptLetterNum);
+      }
+      //return letter;
       // char codes a-z 97-122
       // char codes A-Z 65-90
       //char codes ',','.','<','>'   44,46,60,62
 
     }
-  return {
-    row:row,
-    keys:keys
-
+    return {
+      row:row,
+      keys:keys,
+      coded:coded
+    };
   };
-  };
-encrypt('lemmings love lollies & lemons!',713);
+console.log(encrypt('lemmings love lollies & lemons!',713));
+console.log(decrypt('aizzi.hd aimi aiaaiid & aizi.d!',713));
+console.log(encrypt('Ball',134));
+console.log(decrypt('>fdd',134));
+console.log(encrypt('Q',555));
+console.log(encrypt('A',555));
+console.log(encrypt('Z',555));
+console.log(decrypt('I',555));
+console.log(decrypt('H',555));
+console.log(decrypt('N',555));
