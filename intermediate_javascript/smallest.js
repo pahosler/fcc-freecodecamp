@@ -22,19 +22,14 @@ function smallestCommons(arr) {
     dArr = arr.slice(0); // copy arr to delta to maintain change in arr
 
     function getSmallest() {
-
         arr.forEach(function(e, i, a) {
-            e < a[a.length - 1] ? a[i] = e += dArr[i] : e = e;
-            a[a.length - 1] < e ? a[a.length - 1] += dArr[dArr.length - 1] : a[a.length - 1] = a[a.length - 1];
-            this.stack = a[0]; // I'll just leave this here for now, get it with stack outside of here...
+           e =  e < a[a.length - 1] ? a[i] = e += dArr[i] : e 
+            a[a.length - 1] = a[a.length - 1] < e ? a[a.length - 1] += dArr[dArr.length - 1] : a[a.length - 1]
         }, this);
     }
     while (arr[0] !== arr[arr.length - 1]) {
         getSmallest();
     }
-
-    //like this console.log(stack); it should work anyway...
-console.log("stack ",stack);
     return arr[0];
 }
 
