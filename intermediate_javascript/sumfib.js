@@ -6,24 +6,24 @@ For example, sumFibs(10) should return 10 because all odd Fibonacci numbers less
 */
 
 function sumFibs(num) {
-  function Fibonacci(n) {
-    if (n == 0 || n == 1) return 1;
-    else
-      return Fibonacci(n - 1) + Fibonacci(n - 2);
-  }
-  var fib = 0;
-  var sum = 0;
-  for (var i = 0; i < num; ++i) {
-    fib = Fibonacci(i);
-    if (fib <= num) {
-      (fib % 2) ? sum += fib : sum = sum;
-
-    } else {
-      break
+    function Fibonacci(n) {
+        if (n == 0 || n == 1) return 1;
+        else
+            return Fibonacci(n - 1) + Fibonacci(n - 2);
     }
+    var fib = 0;
+    var sum = 0;
+    for (var i = 0; i < num; ++i) {
+        fib = Fibonacci(i);
+        if (fib <= num) {
+            (fib % 2) ? sum += fib: sum = sum;
 
-  }
-  return num=sum;
+        } else {
+            break
+        }
+
+    }
+    return sum;
 }
 
 console.log(sumFibs(1000));
