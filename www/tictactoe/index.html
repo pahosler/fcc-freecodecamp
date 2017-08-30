@@ -7,11 +7,11 @@
   <!-- local stylesheet -->
   <link rel="stylesheet" href="css/style.css">
   <!-- local javascripts -->
-  <!--  <scrpt src="js/calculator.js"></scrpt>-->
   <script src="js/tictactoe.js"></script>
 </head>
 
-<body onload="draw();">
+<body onload="board.init()">
+  <body>
   <div id="title">
     <h1> Tic Tac Toe </h1>
     <hr/>
@@ -20,32 +20,34 @@
   <div id="game">
     <canvas id="tictactoe" width="360" height="360"></canvas>
     <div>
-      <p id="results"><img id="xo" src="https://raw.githubusercontent.com/pahosler/images/master/x.gif"><span id=message>Let's Play!<span></p>
+      <img id="xo" src="images/x.gif">
+      <p id="results"><span id=message>Let's Play!</span></p>
 
     </div>
         <div id="slider1">
-          <table id="settings"><tr><td>
+          <table id="settings"><tr><td id="aichoice">
           <span id="easy">AI</span>
-            </td>
-            <td>
+        </td>
+        <td id="buttons">
           <label class="switch">
           <input id="AI" type="checkbox" checked>
           <div class="slider round"></div>
         </label>
-            </td>
-         <td>
+        </td>
+        <td id="playerchoice">
           <span id="ox">X</span>
-           </td>
-           <td>
-         <label class="switch">
+        </td>
+        <td id="buttons">
+          <label class="switch">
           <input id="player" type="checkbox">
           <div class="slider round"></div>
         </label>
-           </td></tr>
-      </div>
-          </table>
+        </td>
+        </tr>
+    </div>
+    </table>
+    <div id="reset"><button class="button" id="resetButton">RESET</button></div>
   </div>
-
 
 </body>
 </html>

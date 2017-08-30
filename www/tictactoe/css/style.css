@@ -22,6 +22,12 @@ hr {
   width: 80%;
 }
 
+#xo {
+  position: absolute;
+  left: -20px;
+  top: 420px;
+}
+
 #game {
   height: 385px;
   width: 385px;
@@ -36,7 +42,7 @@ hr {
 #results {
   position: relative;
   top: 420px;
-  left: -20px;
+  left: 60px;
   font-family: Pangolin, cursive;
   font-size: 50px;
   color: #ff5555;
@@ -47,6 +53,7 @@ hr {
   position: relative;
   border-spacing: 5px;
   left: 0px;
+  top: 100px;
   text-align: left;
   width: 265px;
 }
@@ -138,4 +145,34 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+.button {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 20px;
+  font-family: Pangolin, cursive;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: lightgreen;
+  background-color: #ff5555;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px #ffbb88;
+}
+
+.button:hover {background-color: #ff5555}
+
+.button:active {
+  background-color: #ffbb88;
+  box-shadow: 0 5px lightgreen;
+  transform: translateY(4px);
+  color: darkgreen;
+}
+#reset {
+  position: relative;
+  top: 100px;
+  left: -80px;
+
 }

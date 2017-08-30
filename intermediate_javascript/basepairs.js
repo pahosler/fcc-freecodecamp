@@ -38,8 +38,6 @@ function pairElement(str) {
                 a[n].push("A");
                 break;
         }
-        // a[n].push(n);
-        // console.log(a[n][0]);
     });
     return dna;
 }

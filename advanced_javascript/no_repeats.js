@@ -12,15 +12,18 @@
 //https://repl.it/C5ci/1
 
 function permAlone(str) {
+  if (str.length === 1) return 1
+  if (str.split('').every(e => e===str[0])) return 0
+
   return str;
 }
 
-console.log(permAlone('aab');
-console.log(permAlone("aaa"); // should return 0.
-console.log(permAlone("aabb"); // should return 8.
-console.log(permAlone("abcdefa"); // should return 3600.
-console.log(permAlone("abfdefa"); // should return 2640.
-console.log(permAlone("zzzzzzzz"); // should return 0.
-console.log(permAlone("a"); // should return 1.
-console.log(permAlone("aaab"); // should return 0.
-console.log(permAlone("aaabb"); // should return 12
+console.log(permAlone('aab'));
+console.log(permAlone("aaa")); // should return 0.
+console.log(permAlone("aabb")); // should return 8.
+console.log(permAlone("abcdefa")); // should return 3600.
+console.log(permAlone("abfdefa")); // should return 2640.
+console.log(permAlone("zzzzzzzz")); // should return 0.
+console.log(permAlone("a")); // should return 1.
+console.log(permAlone("aaab")); // should return 0.
+console.log(permAlone("aaabb")); // should return 12

@@ -8,10 +8,10 @@ function werds(str) {
   }
   var text = 'AWUBWUBWUBBWUBWUBWUBC';
   var song='';
-  text.split('WUB').reduce((a,b)=>{
-     (b !== '')?song+=b:null
-  },[])
-//  console.log(song);
+  // text.split('WUB').reduce((a,b)=>{
+  //    (b !== '')?song+=b:null
+  // },[])
+  console.log(song);
 }
 
 werds('abc');

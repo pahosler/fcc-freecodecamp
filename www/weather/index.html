@@ -1,82 +1,124 @@
 <!DOCTYPE html>
-<!-- PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">-->
 <html lang="en">
 
-<head>
+  <head>
     <title>Free Code Camp Weather</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--    <meta http-equiv="Content-Type" content="text/html"; charset="utf-8">-->
 
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/weather.css">
+    <link href='https://fonts.googleapis.com/css?family=Calligraffitti' rel='stylesheet' type='text/css'>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="js/getweather.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/weather.js"></script>
 
-</head>
+  </head>
 
-<body style="background-color: #fff;">
-
-    <!--<input type="checkbox" id="temp">-->
-
-    <div class="weatherapp">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="weather-container">
-                    <!--
-          <img id="forecast" src="images/forecast-container.png">
-          <img id="nextday" src="images/nextdays-container.png">
-        -->
-                    <div class="location-container col-sm-1">
-                        <div id="location">Your City, State</div>
-                        <div id="date">July 10, 2016</div>
-                        <div id="metric">C/</div>
-                        <div id="imperial">F</div>
-                    </div>
-                    <div class="forecast-container col-sm-1">
-                        <div id="localtemp">TEMP</div>
-                        <div id="cond">COND</div>
-                        <img id="weatherImage" src=" ">
-                        <div id="weather">
-                            <ul>
-                                <li id="hilo"><img src="images/temp.png">Temp</li>
-                                <li id="hum"><img src="images/humidity.png">Hum</li>
-                                <li id="wind"><img src="images/wind.png">Wind</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <div class="next-day-container col-sm-1">
-                        <div id="future">
-                            <ul>
-                                <li id="tomorrow">MON</li>
-                                <li id="dayafter">TUE</li>
-                            </ul>
-                            <ul>
-                                <li><img id="day1" src=""></li>
-                                <li><img id="day2" src=""></li>
-                                <!--<li><img id="day3" src=""></li>-->
-                            </ul>
-
-                            <!-- <form class="form-inline" role="form">
-                        <div class="form-group">
-                            <label for="zipcode"></label>
-                            <input type="text" class="form-control" id="zipcode" placeholder="Zip Code">
-                            <button class="btn btn-primary">Submit</button> -->
-                        </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+  <body style="background-color: rgb(50.2%, 50.2%, 50.2%);">
+    <div class="container" id='main'>
+    <div class="weather-container">
+      <div class="location-container">
+        <div id="location">Your City, State</div>
+        <div id="date">July 10, 2016</div>
+      </div>
+      <div class="forecast-container">
+        <div id="localtemp">TEMP
+          <div class='metric'><button class='convert'>F</button></div>
+        </div>
+        <div id='wind'><img src="http://pahosler.com/weather/images/wind.png"> </div>
+        <img id="weatherImage" src=" ">
+        <div id="weather">
+          <div id="cond">COND</div>
 
         </div>
+
+      </div>
+      <!-- build a carousel to display extended forecast -->
+      <div class='next-day-container'>
+        <div id='future' class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol id='indicators' class="carousel-indicators">
+            <li data-target="#future" data-slide-to="0" class="active"></li>
+            <li data-target="#future" data-slide-to="1"></li>
+            <li data-target="#future" data-slide-to="2"></li>
+            <li data-target="#future" data-slide-to="3"></li>
+            <li data-target="#future" data-slide-to="4"></li>
+            <li data-target="#future" data-slide-to="5"></li>
+          </ol>
+          <!-- slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class='item active'>
+              <ul>
+                <li class='title' id="title2">forecast</li>
+                <li class='title' id="title3">forecast</li>
+              </ul>
+              <ul>
+                <li><img id="2" src=""></li>
+                <li><img id="3" src=""></li>
+              </ul>
+            </div>
+            <div class='item'>
+              <ul>
+                <li class='title' id="title4">forecast</li>
+                <li class='title' id="title5">forecast</li>
+              </ul>
+              <ul>
+                <li><img id="4" src=""></li>
+                <li><img id="5" src=""></li>
+              </ul>
+            </div>
+            <div class='item'>
+              <ul>
+                <li class='title' id="title6">forecast</li>
+                <li class='title' id="title7">forecast</li>
+              </ul>
+              <ul>
+                <li><img id="6" src=""></li>
+                <li><img id="7" src=""></li>
+              </ul>
+            </div>
+            <div class='item'>
+              <ul>
+                <li class='title' id="title8">forecast</li>
+                <li class='title' id="title9">forecast</li>
+              </ul>
+              <ul>
+                <li><img id="8" src=""></li>
+                <li><img id="9" src=""></li>
+              </ul>
+            </div>
+            <div class='item'>
+              <ul>
+                <li class='title' id="title10">forecast</li>
+                <li class='title' id="title11">forecast</li>
+              </ul>
+              <ul>
+                <li><img id="10" src=""></li>
+                <li><img id="11" src=""></li>
+              </ul>
+            </div>
+            <div class='item'>
+              <ul>
+                <li class='title' id="title12">forecast</li>
+                <li class='title' id="title13">forecast</li>
+              </ul>
+              <ul>
+                <li><img id="12" src=""></li>
+                <li><img id="13" src=""></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
 
-</body>
+  </div>
+  </body>
 
 </html>
