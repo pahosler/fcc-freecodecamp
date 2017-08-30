@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>Free Code Camp Weather</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/weather.css">
+    <link href='https://fonts.googleapis.com/css?family=Calligraffitti' rel='stylesheet' type='text/css'>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="js/getweather.js"></script>
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+  </head>
+
+  <body style="background-color: rgb(50.2%, 50.2%, 50.2%);">
+    <form class="form-inline" role="form">
+      <div class="form-group">
+        <label for="zipcode">Enter Zipcode:</label>
+        <input type="text" class="form-control" id="zipcode" placeholder="10018">
+        <button id="myZip" type="button" class="btn btn-primary">Submit</button>
+        <button class="js-geolocate" style="display: none;">Your Local Weather</button>
+      </div>
+    </form>
+    <p id="forecast"></p>
+    <div>
+
+    </div>
+    <input type="checkbox" id="temp">
+    <img id="weatherImage" " src=" "></img>
+
+  </body>
+
+</html>
