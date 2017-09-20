@@ -31,7 +31,7 @@ $(document).ready(function() {
       this.$buttonSearch.on('click', this.searchTwitch.bind(this));
       this.$input.on('keypress', function(e) {
         if (e.which == 13) {
-          twitch.$buttonSearch.click();
+          twitch.searchTwitch();
           return false;
         }
       }).bind(this);
@@ -56,7 +56,7 @@ $(document).ready(function() {
     getData: function() {
       this.info.data = [];
       for (var stream = 0; stream < this.stream.length; stream++) {
-        $.getJSON('https://api.twitch.tv/kraken/streams/' + this.stream[stream] + '?callback=?', function(data) {
+        $.getJSON('https://api.twitch.tv/kraken/streams/' + this.stream[stream] + '?client_id=7xddzf989fnwudfd4gitfwxwd7ufpd&callback=?', function(data) {
           if (data.stream === null) {
             twitch.getOfflineInfo(data._links.channel);
           } else {
@@ -77,7 +77,7 @@ $(document).ready(function() {
     },
     getFeatured: function() {
       this.info.data = [];
-      $.getJSON('https://api.twitch.tv/kraken/streams/featured', function(data) {
+      $.getJSON('https://api.twitch.tv/kraken/streams/featured?client_id=7xddzf989fnwudfd4gitfwxwd7ufpd&callback=?', function(data) {
         for (var i = 0; i < data.featured.length; i++) {
           twitch.info.userName = data.featured[i].stream.channel.display_name;
           twitch.info.uri = data.featured[i].stream.channel.url;
@@ -94,13 +94,13 @@ $(document).ready(function() {
     },
     searchTwitch: function() {
       this.info.data = [];
-      $.getJSON('https://api.twitch.tv/kraken/search/channels?q=' + this.$input.val() + '&type=suggest&live=true', function(data) {
+      $.getJSON(`https://api.twitch.tv/kraken/search/streams?query=${this.$input.val()}&client_id=7xddzf989fnwudfd4gitfwxwd7ufpd`, function(data) {
         console.log(data);
-        for (var i = 0; i < data.channels.length; i++) {
-          twitch.info.userName = data.channels[i].display_name;
-          twitch.info.uri = data.channels[i].url;
-          twitch.info.userLogo = data.channels[i].logo;
-          twitch.info.userStatus = data.channels[i].status;
+        for (var i = 0; i < data.streams.length; i++) {
+          twitch.info.userName = data.streams[i].channel.display_name;
+          twitch.info.uri = data.streams[i].channel.url;
+          twitch.info.userLogo = data.streams[i].channel.logo;
+          twitch.info.userStatus = data.streams[i].channel.status;
           twitch.info.userBroadcast = "On Line";
           twitch.info.onoffS = "onsmall";
           twitch.info.onoffL = "onlarge";
@@ -111,7 +111,7 @@ $(document).ready(function() {
       });
     },
     getOfflineInfo: function(channels) {
-      $.getJSON(channels + '?callback=?', function(data) {
+      $.getJSON(channels + '?client_id=5j0r5b7qb7kro03fvka3o8kbq262wwm&', function(data) {
         twitch.info.userLogo = data.logo;
         twitch.info.uri = data.url;
         twitch.info.userName = data.display_name;

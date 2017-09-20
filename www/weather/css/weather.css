@@ -7,7 +7,7 @@
 
 @import 'https://fonts.googleapis.com/css?family=Hind+Guntur';
 body {
-  background-image: url(http://pahosler.com/weather/images/warm.png);
+  background-image: url('../images/warm.png');
   background-size: cover;
   font-family: 'Hind Guntur', sans-serif;
   color: #fff;
@@ -23,7 +23,7 @@ body {
   width: 320px;
   height: 584px;
   margin: auto;
-  background-image: url(http://pahosler.com/weather/images/warm.png);
+  background-image: url(../images/warm.png);
   background-size: cover;
   border: 1px solid transparent;
   border-radius: 10px;
@@ -73,8 +73,9 @@ body {
 
 .next-day-container {
   position: relative;
+  left: 5px;
   height: 252px;
-  width: 390px;
+  width: 320px;
   background-size: cover;
 }
 
@@ -225,6 +226,6 @@ li img {
 .title {
   position: relative;
   top: 15px;
-  font-size: 20px;
+  font-size: .8em;
   text-align: center;
 }
