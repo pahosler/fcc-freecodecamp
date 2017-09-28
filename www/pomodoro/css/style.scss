@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css?family=Molle:400i');
+body {
+  color: #404040;
+/*   padding: 50px; */
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #05a0a9;
+}
+$lighter-blue: #abe0ed;
+$light-blue: #46b7d5;
+$blue: #0085b2;
+$orange: #FD8521;
+
+h1 {
+  position: relative;
+  top: 50px;
+  left: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #a0001f;
+  font-size: 4.0em;
+  font-family: Molle, cursive;
+}
+h2 {
+  font-weight: 300;
+  text-align: center;
+}
+
+output {
+  display: block;
+  text-align: center;
+}
+
+#sliders {
+  text-align: left;
+  width: 80%;
+  cellspacing: 10px;
+  cellpadding: 10px;
+}
+.inval {
+  width: 20px;
+  text-align: center;
+  background-color: #ddaaaa;
+  color: #a0001f;
+}
+
+.rangeslider__handle {
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Safari */
+  transform: rotate(45deg);
+}
+
+.rangeslider, .rangeslider__fill {
+  display: block;
+  -moz-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background-color: #ddaaaa;
+}
+.rangeslider__fill {
+  background: -webkit-linear-gradient(
+    left,
+    $lighter-blue,
+    $light-blue
+  ); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(
+    right,
+    $lighter-blue,
+    $light-blue
+  ); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(
+    right,
+    $lighter-blue,
+    $light-blue
+  ); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(
+    to right,
+    $lighter-blue,
+    $light-blue
+  ); /* Standard syntax (must be last) */
+  position: absolute;
+  background-color: #ff0000;
+}
+.rangeslider--vertical .rangeslider__handle {
+  background-image: url(../images/pomodoro-timer.png);
+  height: 40px;
+  width: 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 43px 43px;
+  left: -10px;
+  touch-action: pan-x;
+  -ms-touch-action: pan-x;
+}
+
+input[type="range"]:focus + .rangeslider .rangeslider__handle {
+  -moz-box-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
+  -webkit-box-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
+  box-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
+}
+
+table {
+  background-image: url(../images/Tomato-Clip-Art-Free-PNG.png);
+  background-size: 560px 550px;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-align: center;
+  border-collapse: separate;
+  border: solid black 1px;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+}
+
+td {
+  text-align: center;
+  width: 33%;
+  cellspacing: 10px;
+}
+
+.slide {
+  position: relative;
+  left: 40px;
+  top: 5px;
+  margin: auto;
+}
+
+#title {
+  font-family: Molle, cursive;
+  font-size: 1.2em;
+  color: #11aa44;
+}
+
+button {
+  position: relative;
+  top: -3px;
+  border-radius: 50%;
+  color: #ff2211;
+  outline: none;
+  cursor: pointer;
+}
+
+#fa-reset {
+  transform: rotate(0deg);
+}
+
+#work-text {
+  background-color: #ddaaaa;
+}
+
+#break-text {
+  background-color: #ddaaaa;
+}
+
+#interval-text {
+  background-color: #ddaaaa;
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.paused {
+  opacity: 0.6;
+}
+
+#info {
+  position: relative;
+  left: 15px;
+  cursor: help;
+  color: #11aa44;
+}
+input[type=text]{
+  border: 1px solid #11aa44;
+  border-radius: 5px;
+}
+
+#break, .rangeslider__fill {
+  background-color: green;
+}
+
+#flip {
+  height: 270px;
+  width: 345px;
+  margin: 0 auto;
+}
+#flip .back{
+  position: relative;
+  // top: 10px;
+  // left: -30px;
+  visibility: hidden;
+  background: #ddaaaa;
+  color: #fff;
+  text-align: left;
+}
+.back{
+  position: relative;
+  left: -33px;
+  width: 80px;
+
+}
+#close{
+  border-radius: 0px;
+  border: none;
+  position:relative;
+  left: 155px;
+  top: 0px;
+  cursor: pointer;
+  background-color: #ddcbcc;
+}
+
+.menu {
+  display: inline-block;
+  float: left;
+  border-radius: 0%;
+  border: none;
+  cursor: pointer;
+  background-color: #ddcbcc;
+  position: relative;
+  left: 150px;
+  top: 0px;
+
+}
+#aboutpage {
+  overflow: hidden;
+  height: 260px;
+}
+#abouttext {
+  visibility: hidden;
+  overflow: auto;
+  margin-right: -100px;
+  margin-left: 20px;
+  padding-right: 100px;
+  max-height: 100%;
+  color: #f00;
+  text-align: left;
+  font-weight: bolder;
+}
+
+#settingspage {
+  visibility: hidden;
+  position: relative;
+  font-family: Molle, cursive;
+  font-size: 1.4em;
+  top: -190px;
+  left: -60px;
+  height:240px;
+  width: 280px;
+  color: #a0001f;
+  text-align: right;
+}
+
+input[type=checkbox] {
+	visibility: hidden;
+}
+
+.pomsetting{
+  width: 20px;
+	height: 10px;
+	background: #ddcbcc;
+	margin: -3px 290px;
+	position: relative;
+	border-radius: 3px;
+  top: -12px;
+}
+
+.pomsetting label{
+  display: inline-block;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+
+	transition: all .2s ease;
+	cursor: pointer;
+	position: absolute;
+	top: -3px;
+	left: -3px;
+
+	background: #a0001f;
+}
+
+.pomsetting input[type=checkbox]:checked + label {
+	left: 10px;
+}

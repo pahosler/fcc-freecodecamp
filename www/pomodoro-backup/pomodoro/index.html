@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<title>Pomodoro</title>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+
+<!--
+  https://github.com/andreruffert/rangeslider.js
+  by André Ruffert - @andreruffert
+-->
+
+<body onload="pomodoro.init()">
+  <div id="pomodoro">
+    <h1>Pomodoro</h1>
+    <div id="flip">
+      <div class="front">
+        <table id="sliders">
+          <tr>
+            <td>
+              <div class="slide">
+                <input id="work" type="range" value="25" min="0" max="50" step="1" data-orientation="vertical" data-rangeslider0><br>
+              </div>
+            </td>
+            <td>
+              <div class="slide">
+                <input id="break" type="range" value="5" min="0" max="25" step="1" data-orientation="vertical" data-rangeslider1><br>
+              </div>
+            </td>
+            <td>
+              <div class="slide">
+                <input id="interval" type="range" value="4" min="0" max="8" step="1" data-orientation="vertical" data-rangeslider2><br>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input class="inval" id="work-text" type="text" placeholder="25"><br>
+            </td>
+            <td>
+              <input class="inval" id="break-text" type="text" placeholder="15"><br>
+            </td>
+            <td>
+              <input class="inval" id="interval-text" type="text" placeholder="4"><br>
+
+            </td>
+          </tr>
+          <tr>
+            <td><b><span id="title">Work</span></b></td>
+            <td><b><span id="title">Break</span></b></td>
+            <td><b><span id="title">Interval</span></b></td>
+          </tr>
+          <tr>
+            <td>
+              <button id="start" class="enabled"><i class="fa fa-play" aria-hidden="true"></i></button>
+            </td>
+            <td>
+              <button class="notpaused" id="stop"><i id="pause" class="fa fa-pause" aria-hidden="true"></i></button>
+            </td>
+            <td>
+              <button id="reset"><i id="fa-reset" class="fa fa-refresh" aria-hidden="true"></i></button>
+              <i id="info" class="fa fa-info-circle" aria-hidden="true"></i>
+            </td>
+          </tr>
+        </table>
+        <br><br>
+      </div>
+      <div class="back">
+        <!-- back content -->
+        <div id="aboutpage">
+          <button id="close">X</button>
+          <button class="menu" id="about">About</button>
+          <button class="menu" id="settings">Settings</button>
+
+          <div id="abouttext">
+            <p>Written by: Paul Hosler 2017/07/07</p>
+
+            <p>requires: jquery 2.1.3, rangslider.js 2.3.0, font awesome, and jquery.flip.min.js</p>
+            <p>rangesldier.js author and link providied in html comments.</p>
+            <p>Music clips are from Code Monkey by Jonathan Coulton, go listen to some of his music on YouTube, you're welcome!</p>
+            <ul>How to use this Pomodoro
+              <li>Use sliders to adjust Work and Break Times, and Intervals</li>
+              <li>Work Time can be set for up to 50 minutes</li>
+              <li>Break Time can be set for up to 25 minutes</li>
+              <li>Intervals can be set up to 8</li><br>
+              <li>Press the Play button to start timer</li>
+              <ul>
+                <li>Play will be disabled until reset or ALL intervals have been completed</li>
+              </ul>
+              <li>The Pause button will pause and restart the timer from a paused state</li>
+              <li>Press the Reset button to return to default timer settings</li>
+            </ul>
+
+            <ul>Features or Bugs depending on your perspective...
+              <li>You CAN set Work or Break to zero and the timer will still count down</li>
+              <li>Interval can be zero and you will get one pass through either Work or Break, but Break will not fire if Interval is zero and Work has a value</li>
+              <li>Flipping to this screen is quirky and probably won't work in all browsers. I didn't write flip, and I didn't quite grasp how to get jquery to work with a much better vanilla CSS card flipper. I think if I could have used vanilla js for this
+                project it wouldn't have been an issue. Since I didn't want to roll my own slider code I just tried to use jquery throughout this project.</li>
+              <li>Suggestions, kudos, questions, comments, or hate mail should be directed to me. Find me on gitter, Facebook, github, twitter, or just about anywhere with gmail, my user name most everywhere on the web is pahosler.
+              </li>
+            </ul>
+
+          </div>
+          <div id="settingspage">
+            <form>
+              Mute Alarms: <input id="mute" type="checkbox"><br> Test tick: <input id="testtick" type="checkbox">
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<!-- remote javascript/css -->
+<script src="script/jquery.min.js"></script>
+<script src="script/rangeslider.js"></script>
+<link rel="stylesheet" href="css/rangeslider.css"></link>
+
+<script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+<script src="https://use.fontawesome.com/bf25df7a32.js"></script>
+<!-- local stylesheet -->
+<link rel="stylesheet" href="css/style.min.css">
+
+<!-- local javascript -->
+<script src="script/pomodoro.js"></script>
+
+</html>

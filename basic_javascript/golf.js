@@ -1,5 +1,14 @@
 function golfScore(par, strokes) {
-    // Only change code below this line
+    // Only change code below this 
+    // new code 2017...
+    const arr = ["Eagle", "Eagle", "Birdie", "Par", "Bogey", "Double Bogey"];
+    const golf=(par,strokes)=>( strokes - par > 2 ? "Go home!"
+        : strokes === 1 ? "Hole-in-one!'"
+        : arr[arr.indexOf("Par") + (strokes - par)] 
+    );
+     return golf(par,strokes);
+
+    // this was my previous submission just over a year ago...
     if (strokes == 1) {
         return "Hole-in-one!";
     } else if (strokes <= par - 2) {
