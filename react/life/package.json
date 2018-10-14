@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://pahosler.github.io/life",
   "dependencies": {
-    "gh-pages": "^1.0.0",
+    "gh-pages": "^1.2.0",
     "husky": "^0.14.3",
     "lint-staged": "^4.2.1",
     "node-sass-chokidar": "0.0.3",
